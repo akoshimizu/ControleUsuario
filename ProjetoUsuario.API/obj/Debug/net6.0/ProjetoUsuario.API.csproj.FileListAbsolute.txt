@@ -36,3 +36,41 @@ C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.API\bin\Debug\n
 C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.API\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.API\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\appsettings.Development.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\appsettings.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.API.exe
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.API.deps.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.API.runtimeconfig.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.API.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.API.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\MySqlConnector.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.Application.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.Domain.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.Persistence.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.Application.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.Domain.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\bin\Debug\net6.0\ProjetoUsuario.Persistence.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.csproj.AssemblyReference.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.AssemblyInfoInputs.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.AssemblyInfo.cs
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.csproj.CoreCompileInputs.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.MvcApplicationPartsAssemblyInfo.cs
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.MvcApplicationPartsAssemblyInfo.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\staticwebassets.build.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\staticwebassets.development.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\scopedcss\bundle\ProjetoUsuario.API.styles.css
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.csproj.CopyComplete
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\refint\ProjetoUsuario.API.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ProjetoUsuario.API.genruntimeconfig.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.API\obj\Debug\net6.0\ref\ProjetoUsuario.API.dll

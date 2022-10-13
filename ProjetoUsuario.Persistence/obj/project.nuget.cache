@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A1CpY5BNImLNTviynwQUKhfl0LLkwGu8RCZ6zm+9Fx3g6C4abXK/LbxHBPZW4jP+smTpjBQ8X8isojwPzIQZJQ==",
+  "dgSpecHash": "VCJyc6zT8SLI+pAIZVIYszvuwqaZDTDxiPBQa7eczS+T8MD1gQwKL/G+2HInAJ3EGx5ZSpuoeYyP2yTai9XBBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj",
+  "projectFilePath": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ander\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",

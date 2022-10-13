@@ -617,11 +617,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Application\\ProjetoUsuario.Application.csproj",
+      "projectUniqueName": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Application\\ProjetoUsuario.Application.csproj",
       "projectName": "ProjetoUsuario.Application",
-      "projectPath": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Application\\ProjetoUsuario.Application.csproj",
+      "projectPath": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Application\\ProjetoUsuario.Application.csproj",
       "packagesPath": "C:\\Users\\ander\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Application\\obj\\",
+      "outputPath": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -642,11 +642,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Domain\\ProjetoUsuario.Domain.csproj": {
-              "projectPath": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Domain\\ProjetoUsuario.Domain.csproj"
+            "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Domain\\ProjetoUsuario.Domain.csproj": {
+              "projectPath": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Domain\\ProjetoUsuario.Domain.csproj"
             },
-            "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj": {
-              "projectPath": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj"
+            "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj": {
+              "projectPath": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj"
             }
           }
         }
