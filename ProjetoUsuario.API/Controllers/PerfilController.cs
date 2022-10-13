@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjetoUsuario.Domain.Entidades;
 using ProjetoUsuario.Application.Interfaces;
+using ProjetoUsuario.Domain.DTO;
 
 namespace ProjetoUsuario.API.Controllers
 {
@@ -29,7 +29,7 @@ namespace ProjetoUsuario.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePerfil([FromBody] Perfil perfil)
+        public IActionResult CreatePerfil([FromBody] PerfilDTO perfil)
         {
             if(perfil.Equals(null)) return BadRequest();
             var perfilCriado = _perfil.Create(perfil); 
@@ -37,7 +37,7 @@ namespace ProjetoUsuario.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdatePerfil([FromBody] Perfil perfil)
+        public IActionResult UpdatePerfil([FromBody] PerfilDTO perfil)
         {
             if(perfil.Equals(null)) return BadRequest();
             var perfilAtualizado = _perfil.UpdatePerfil(perfil); 

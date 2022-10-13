@@ -1,3 +1,4 @@
+using ProjetoUsuario.Domain.DTO;
 using ProjetoUsuario.Domain.Entidades;
 
 namespace ProjetoUsuario.Application.Interfaces
@@ -6,8 +7,8 @@ namespace ProjetoUsuario.Application.Interfaces
     {
         Perfil FindById(int id);
         List<Perfil> FindAllPerfil();
-        Perfil Create(Perfil perfil);
-        Perfil UpdatePerfil(Perfil perfil);
+        Perfil Create(PerfilDTO perfil);
+        Perfil UpdatePerfil(PerfilDTO perfil);
         void DeletePerfil(int id);
     }
 }
