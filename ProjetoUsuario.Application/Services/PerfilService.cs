@@ -18,5 +18,27 @@ namespace ProjetoUsuario.Application.Services
             var criarPerfil = _perfilRepository.Create(perfil);
             return criarPerfil;
         }
+
+        public List<Perfil> FindAllPerfil()
+        {
+            return _perfilRepository.FindAllPerfil();
+        }
+
+        public Perfil FindById(int id)
+        {
+            var perfil = _perfilRepository.FindById(id);
+            return perfil;
+        }
+
+        public Perfil UpdatePerfil(Perfil perfil)
+        {
+            var perfilAtualizado = _perfilRepository.UpdatePerfil(perfil);
+            return perfilAtualizado;
+        }
+
+        public void DeletePerfil(int id)
+        {
+            _perfilRepository.DeletePerfil(id);
+        }
     }
 }

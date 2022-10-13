@@ -18,5 +18,54 @@ namespace ProjetoUsuario.Persistence.Repository
             _context.SaveChanges();
             return perfil;
         }
+
+        public List<Perfil> FindAllPerfil()
+        {
+            return _context.Perfis.ToList();
+        }
+
+        public Perfil FindById(int id)
+        {
+            var perfil = _context.Perfis.FirstOrDefault(p => p.Id.Equals(id));
+            return perfil;
+        }
+
+        public Perfil UpdatePerfil(Perfil perfil)
+        {
+            var perfilAtualizado = _context.Perfis.SingleOrDefault(p => p.Id ==perfil.Id);
+            if(perfilAtualizado != null)
+            {
+                try
+                {
+                    _context.Entry(perfilAtualizado).CurrentValues.SetValues(perfil);
+                    _context.SaveChanges();
+                    return perfilAtualizado;
+                }
+                catch (System.Exception)
+                {
+                    
+                    throw;
+                }
+            }
+            return null;
+        }
+
+        public void DeletePerfil(int id)
+        {
+            var perfilDeletado = _context.Perfis.SingleOrDefault(p => p.Id == id);
+            if(perfilDeletado != null)
+            {
+                try
+                {
+                    _context.Remove(perfilDeletado);
+                    _context.SaveChanges();
+                }
+                catch (System.Exception)
+                {
+                    
+                    throw;
+                }
+            }
+        }
     }
 }
