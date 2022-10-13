@@ -1,0 +1,17 @@
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.deps.json
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.dll
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.pdb
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.AssemblyReference.cache
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.AssemblyInfoInputs.cache
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.AssemblyInfo.cs
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.dll
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\refint\ProjetoUsuario.Persistence.dll
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.pdb
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ref\ProjetoUsuario.Persistence.dll
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.runtimeconfig.json
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Domain.dll
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Domain.pdb
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.CopyComplete
+C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.genruntimeconfig.cache
