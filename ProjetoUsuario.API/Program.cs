@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using ProjetoUsuario.Application.Interfaces;
 using ProjetoUsuario.Application.Services;
@@ -27,7 +28,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "Controle de Usuarios - v1");
+            });
+    
+    var options = new RewriteOptions();
+    options.AddRedirect("^$", "swagger");
+    app.UseRewriter(options);
 }
 
 app.UseHttpsRedirection();

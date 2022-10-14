@@ -1,6 +1,7 @@
 using ProjetoUsuario.Domain.Entidades;
 using ProjetoUsuario.Application.Interfaces;
 using ProjetoUsuario.Persistence.Repository;
+using ProjetoUsuario.Domain.DTO;
 
 namespace ProjetoUsuario.Application.Services
 {
@@ -13,9 +14,13 @@ namespace ProjetoUsuario.Application.Services
             _perfilRepository = perfilRepository;
         }
 
-        public Perfil Create(Perfil perfil)
+        public Perfil Create(PerfilDTO perfil)
         {
-            var criarPerfil = _perfilRepository.Create(perfil);
+            Perfil criarPerfil = new Perfil();
+            criarPerfil.Id = perfil.Id;
+            criarPerfil.DescricaoPerfil = perfil.DescricaoPerfil;
+            criarPerfil.IndicadorPerfil  = perfil.IndicadorPerfil;
+            var novoPerfil = _perfilRepository.Create(criarPerfil);
             return criarPerfil;
         }
 
@@ -30,9 +35,13 @@ namespace ProjetoUsuario.Application.Services
             return perfil;
         }
 
-        public Perfil UpdatePerfil(Perfil perfil)
+        public Perfil UpdatePerfil(PerfilDTO perfil)
         {
-            var perfilAtualizado = _perfilRepository.UpdatePerfil(perfil);
+            Perfil criarPerfil = new Perfil();
+            criarPerfil.Id = perfil.Id;
+            criarPerfil.DescricaoPerfil = perfil.DescricaoPerfil;
+            criarPerfil.IndicadorPerfil  = perfil.IndicadorPerfil;
+            var perfilAtualizado = _perfilRepository.UpdatePerfil(criarPerfil);
             return perfilAtualizado;
         }
 

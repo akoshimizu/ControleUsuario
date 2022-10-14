@@ -15,3 +15,20 @@ C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin
 C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Domain.pdb
 C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.CopyComplete
 C:\Users\ander\OneDrive\Área de Trabalho\Projeto\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.genruntimeconfig.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.deps.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.runtimeconfig.json
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Persistence.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Domain.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\bin\Debug\net6.0\ProjetoUsuario.Domain.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.AssemblyReference.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.AssemblyInfoInputs.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.AssemblyInfo.cs
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.CoreCompileInputs.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.csproj.CopyComplete
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\refint\ProjetoUsuario.Persistence.dll
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.pdb
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ProjetoUsuario.Persistence.genruntimeconfig.cache
+C:\ProjetosLocais\ControleUsuario\ProjetoUsuario.Persistence\obj\Debug\net6.0\ref\ProjetoUsuario.Persistence.dll

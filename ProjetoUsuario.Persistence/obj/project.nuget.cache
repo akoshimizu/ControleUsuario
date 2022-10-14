@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A1CpY5BNImLNTviynwQUKhfl0LLkwGu8RCZ6zm+9Fx3g6C4abXK/LbxHBPZW4jP+smTpjBQ8X8isojwPzIQZJQ==",
+  "dgSpecHash": "TaDio0yUe9T1WbPO/kNmdOoqa/XsuY/oZ64rGNhJ9bvX/yqbidj7AXGDDtUHTb3zoW2TnHots1uFfE3Riq07UQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ander\\OneDrive\\Área de Trabalho\\Projeto\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj",
+  "projectFilePath": "C:\\ProjetosLocais\\ControleUsuario\\ProjetoUsuario.Persistence\\ProjetoUsuario.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ander\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
@@ -20,6 +20,8 @@
     "C:\\Users\\ander\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\ander\\.nuget\\packages\\mysqlconnector\\2.0.0\\mysqlconnector.2.0.0.nupkg.sha512",
+    "C:\\Users\\ander\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.0\\pomelo.entityframeworkcore.mysql.6.0.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\ander\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
