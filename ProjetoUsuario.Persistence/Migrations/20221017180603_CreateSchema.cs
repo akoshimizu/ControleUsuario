@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -20,7 +21,9 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     descricao_perfil = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    indicador_perfil = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    indicador_perfil = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    data_criacao_perfil = table.Column<DateTime>(type: "datetime", nullable: false),
+                    data_ultima_atualizacao_pefil = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +39,7 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     nome_usuario = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    codigo_perfil = table.Column<int>(type: "int", nullable: false),
+                    PerfilId = table.Column<int>(type: "int", nullable: true),
                     email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     codigo_mesa = table.Column<int>(type: "int", nullable: false),
@@ -45,17 +48,27 @@ namespace ProjetoUsuario.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_usuario", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_usuario_perfil_PerfilId",
+                        column: x => x.PerfilId,
+                        principalTable: "perfil",
+                        principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_usuario_PerfilId",
+                table: "usuario",
+                column: "PerfilId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "perfil");
+                name: "usuario");
 
             migrationBuilder.DropTable(
-                name: "usuario");
+                name: "perfil");
         }
     }
 }

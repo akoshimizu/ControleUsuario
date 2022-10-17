@@ -1,6 +1,7 @@
 using ProjetoUsuario.Application.Interfaces;
 using ProjetoUsuario.Domain.DTO;
 using ProjetoUsuario.Domain.Entidades;
+using ProjetoUsuario.Persistence.Context;
 using ProjetoUsuario.Persistence.Repository.Interfaces;
 
 namespace ProjetoUsuario.Application.Services
@@ -26,36 +27,23 @@ namespace ProjetoUsuario.Application.Services
 
         public Usuario Create(UsuarioDTO usuario)
         {
-            Usuario criarUsuario = new Usuario();
-            criarUsuario.Id = usuario.Id;
-            criarUsuario.NomeUsuario = usuario.NomeUsuario;
-            criarUsuario.Email  = usuario.Email;
-            criarUsuario.CodPerfil = usuario.CodPerfil;
-            criarUsuario.CodMesa = usuario.CodMesa;
-            criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
-
-            var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(criarUsuario);
-            if(verificaUsuario.Equals(false))
-            {
-                var usuarioAtualizado = _usuarioRepository.Create(criarUsuario);
+                var usuarioAtualizado = _usuarioRepository.Create(usuario);
                 return usuarioAtualizado;
-            }
-            return null;
         }
 
         public Usuario UpdateUsuario(UsuarioDTO usuarioDTO)
         {
-            Usuario usuario = new Usuario();
-            usuario.Id = usuarioDTO.Id;
-            usuario.NomeUsuario = usuarioDTO.NomeUsuario;
-            //usuario.Email = usuarioDTO.Email;
-            usuario.CodPerfil = usuarioDTO.CodPerfil;
-            usuario.CodMesa = usuarioDTO.CodMesa;
-            usuario.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
+            // Usuario usuario = new Usuario();
+            // usuario.Id = usuarioDTO.Id;
+            // usuario.NomeUsuario = usuarioDTO.NomeUsuario;
+            // usuario.Email = usuarioDTO.Email;
+            // usuario.Perfil = _context.Perfis.First(per => per.Id.Equals(usuarioDTO.CodPerfil));
+            // usuario.CodMesa = usuarioDTO.CodMesa;
+            // usuario.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
 
             //var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(usuario);
 
-            var usuarioAtualizado = _usuarioRepository.UpdateUsuario(usuario);
+            var usuarioAtualizado = _usuarioRepository.UpdateUsuario(usuarioDTO);
             return usuarioAtualizado;
         }
 

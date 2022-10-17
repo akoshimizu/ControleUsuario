@@ -1,3 +1,4 @@
+using ProjetoUsuario.Domain.DTO;
 using ProjetoUsuario.Domain.Entidades;
 
 namespace ProjetoUsuario.Persistence.Repository.Interfaces
@@ -6,8 +7,8 @@ namespace ProjetoUsuario.Persistence.Repository.Interfaces
     {
         Usuario FindById(int id);
         List<Usuario> FindAllUsuario();
-        Usuario Create(Usuario Usuario);
-        Usuario UpdateUsuario(Usuario Usuario);
+        Usuario Create(UsuarioDTO usuario);
+        Usuario UpdateUsuario(UsuarioDTO usuario);
         void DeleteUsuario(int id);
         bool VerificaDuplicidadeUsuario(Usuario Usuario);
     }

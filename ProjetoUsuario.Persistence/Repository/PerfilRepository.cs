@@ -37,7 +37,12 @@ namespace ProjetoUsuario.Persistence.Repository
             {
                 try
                 {
-                    _context.Entry(perfilAtualizado).CurrentValues.SetValues(perfil);
+                    perfilAtualizado.Id = perfil.Id;
+                    perfilAtualizado.DescricaoPerfil = perfil.DescricaoPerfil;
+                    perfilAtualizado.DataCriacaoPerfil = perfilAtualizado.DataCriacaoPerfil;
+                    perfilAtualizado.DataUltimaAtualizacao = perfil.DataUltimaAtualizacao;
+                    perfilAtualizado.IndicadorPerfil = perfil.IndicadorPerfil;
+                    //_context.Entry(perfilAtualizado).CurrentValues.SetValues(perfil);
                     _context.SaveChanges();
                     return perfilAtualizado;
                 }

@@ -11,8 +11,8 @@ namespace ProjetoUsuario.Domain.Entidades
         [Column("nome_usuario")]
         public string NomeUsuario { get; set; }
 
-        [Column("codigo_perfil")]
-        public int CodPerfil { get; set; }
+        [Column("PerfilId")]
+        public Perfil Perfil { get; set; }
 
         [Column("email")]
         public string Email { get; set; }

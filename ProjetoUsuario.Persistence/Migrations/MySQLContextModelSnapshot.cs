@@ -58,10 +58,6 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("codigo_mesa");
 
-                    b.Property<int>("CodPerfil")
-                        .HasColumnType("int")
-                        .HasColumnName("codigo_perfil");
-
                     b.Property<string>("Email")
                         .HasColumnType("longtext")
                         .HasColumnName("email");
@@ -74,9 +70,23 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("nome_usuario");
 
+                    b.Property<int?>("PerfilId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("PerfilId");
+
                     b.ToTable("usuario");
+                });
+
+            modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Usuario", b =>
+                {
+                    b.HasOne("ProjetoUsuario.Domain.Entidades.Perfil", "Perfil")
+                        .WithMany()
+                        .HasForeignKey("PerfilId");
+
+                    b.Navigation("Perfil");
                 });
 #pragma warning restore 612, 618
         }
