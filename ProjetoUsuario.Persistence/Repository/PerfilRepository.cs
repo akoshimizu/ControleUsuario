@@ -67,5 +67,18 @@ namespace ProjetoUsuario.Persistence.Repository
                 }
             }
         }
+
+        public bool VerificaDuplicidadePerfil(Perfil perfil)
+        {
+            List<Perfil> listaPerfil = _context.Perfis.ToList();
+            foreach (var item in listaPerfil)
+            {
+                if(item.DescricaoPerfil.ToLower().Contains(perfil.DescricaoPerfil.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

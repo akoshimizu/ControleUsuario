@@ -10,5 +10,6 @@ namespace ProjetoUsuario.Application.Interfaces
         Perfil Create(PerfilDTO perfil);
         Perfil UpdatePerfil(PerfilDTO perfil);
         void DeletePerfil(int id);
+        bool VerificaDuplicidadePerfil(PerfilDTO perfil);
     }
 }
