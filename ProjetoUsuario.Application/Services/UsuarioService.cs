@@ -34,16 +34,13 @@ namespace ProjetoUsuario.Application.Services
             criarUsuario.CodMesa = usuario.CodMesa;
             criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
 
-            var usuarioAtualizado = _usuarioRepository.Create(criarUsuario);
+            var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(criarUsuario);
+            if(verificaUsuario.Equals(false))
+            {
+                var usuarioAtualizado = _usuarioRepository.Create(criarUsuario);
                 return usuarioAtualizado;
-
-            // var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(criarUsuario);
-            // if(verificaUsuario.Equals(false))
-            // {
-            //     var usuarioAtualizado = _usuarioRepository.Create(criarUsuario);
-            //     return usuarioAtualizado;
-            // }
-            // return null;
+            }
+            return null;
         }
 
         public Usuario UpdateUsuario(UsuarioDTO usuarioDTO)
@@ -56,6 +53,8 @@ namespace ProjetoUsuario.Application.Services
             usuario.CodMesa = usuarioDTO.CodMesa;
             usuario.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
 
+            var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(usuario);
+
             var usuarioAtualizado = _usuarioRepository.UpdateUsuario(usuario);
             return usuarioAtualizado;
         }
@@ -63,11 +62,6 @@ namespace ProjetoUsuario.Application.Services
         public void DeleteUsuario(int id)
         {
             _usuarioRepository.DeleteUsuario(id);
-        }
-
-        public bool VerificaDuplicidadeUsuario(UsuarioDTO Usuario)
-        {
-            throw new NotImplementedException();
         }
     }
 }

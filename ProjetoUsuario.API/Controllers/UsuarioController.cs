@@ -33,6 +33,7 @@ namespace ProjetoUsuario.API.Controllers
         {
             if(usuario is null) return BadRequest();
             var usuarioCriado = _usuario.Create(usuario);
+            if(usuarioCriado is null) return BadRequest("usuário existente");
             return Ok(usuario);
         }
 

@@ -15,5 +15,11 @@ namespace ProjetoUsuario.Domain.Entidades
 
         [Column("indicador_perfil")]
         public bool IndicadorPerfil { get; set; }
+
+        [Column("data_criacao_perfil")]
+        public DateTime DataCriacaoPerfil { get; set; }
+
+        [Column("data_ultima_atualizacao_pefil")]
+        public DateTime DataUltimaAtualizacao { get; set; }
     }
 }

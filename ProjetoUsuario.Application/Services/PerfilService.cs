@@ -20,6 +20,8 @@ namespace ProjetoUsuario.Application.Services
             criarPerfil.Id = perfil.Id;
             criarPerfil.DescricaoPerfil = perfil.DescricaoPerfil;
             criarPerfil.IndicadorPerfil  = perfil.IndicadorPerfil;
+            criarPerfil.DataCriacaoPerfil = DateTime.Now;
+            criarPerfil.DataUltimaAtualizacao = DateTime.Now;
 
             var verificaPefil = _perfilRepository.VerificaDuplicidadePerfil(criarPerfil);
             if(verificaPefil.Equals(false))
@@ -47,6 +49,7 @@ namespace ProjetoUsuario.Application.Services
             criarPerfil.Id = perfil.Id;
             criarPerfil.DescricaoPerfil = perfil.DescricaoPerfil;
             criarPerfil.IndicadorPerfil  = perfil.IndicadorPerfil;
+            criarPerfil.DataUltimaAtualizacao = DateTime.Now;
             var perfilAtualizado = _perfilRepository.UpdatePerfil(criarPerfil);
             return perfilAtualizado;
         }
@@ -54,15 +57,6 @@ namespace ProjetoUsuario.Application.Services
         public void DeletePerfil(int id)
         {
             _perfilRepository.DeletePerfil(id);
-        }
-
-        public bool VerificaDuplicidadePerfil(PerfilDTO perfil)
-        {
-            Perfil criarPerfil = new Perfil();
-            criarPerfil.Id = perfil.Id;
-            criarPerfil.DescricaoPerfil = perfil.DescricaoPerfil;
-            criarPerfil.IndicadorPerfil  = perfil.IndicadorPerfil;
-            return _perfilRepository.VerificaDuplicidadePerfil(criarPerfil);
         }
     }
 }

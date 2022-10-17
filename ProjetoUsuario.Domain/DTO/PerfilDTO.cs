@@ -12,5 +12,11 @@ namespace ProjetoUsuario.Domain.DTO
 
         [Required(ErrorMessage = "Indique 'true' ou 'false' ")]
         public bool IndicadorPerfil { get; set; }
+
+        //[DataType(DataType.DateTime)]
+        //public DateTime DataCriacaoPerfil { get; set; }
+        
+        //[DataType(DataType.DateTime)]
+        //public DateTime DataUltimaAtualizacao { get; set; }
     }
 }

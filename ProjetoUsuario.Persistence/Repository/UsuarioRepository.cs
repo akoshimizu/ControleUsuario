@@ -52,9 +52,17 @@ namespace ProjetoUsuario.Persistence.Repository
             _context.SaveChanges();
         }
 
-        public bool VerificaDuplicidadeUsuario(Usuario Usuario)
+        public bool VerificaDuplicidadeUsuario(Usuario usuario)
         {
-            throw new NotImplementedException();
+            List<Usuario> listaUsuario = _context.Usuarios.ToList();
+            foreach (var item in listaUsuario)
+            {
+                if(item.Email.ToLower().Contains(usuario.Email.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

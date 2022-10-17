@@ -11,6 +11,5 @@ namespace ProjetoUsuario.Application.Interfaces
         Usuario Create(UsuarioDTO Usuario);
         Usuario UpdateUsuario(UsuarioDTO Usuario);
         void DeleteUsuario(int id);
-        bool VerificaDuplicidadeUsuario(UsuarioDTO Usuario);
     }
 }
