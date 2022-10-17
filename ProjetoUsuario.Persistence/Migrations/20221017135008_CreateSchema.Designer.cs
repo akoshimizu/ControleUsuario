@@ -10,7 +10,7 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221014141757_CreateSchema")]
+    [Migration("20221017135008_CreateSchema")]
     partial class CreateSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,38 @@ namespace ProjetoUsuario.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("perfil");
+                });
+
+            modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<int>("CodMesa")
+                        .HasColumnType("int")
+                        .HasColumnName("codigo_mesa");
+
+                    b.Property<int>("CodPerfil")
+                        .HasColumnType("int")
+                        .HasColumnName("codigo_perfil");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext")
+                        .HasColumnName("email");
+
+                    b.Property<bool>("IndicadorUsuarioAtivo")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("indicador_usuario");
+
+                    b.Property<string>("NomeUsuario")
+                        .HasColumnType("longtext")
+                        .HasColumnName("nome_usuario");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("usuario");
                 });
 #pragma warning restore 612, 618
         }

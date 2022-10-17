@@ -4,6 +4,7 @@ using ProjetoUsuario.Application.Interfaces;
 using ProjetoUsuario.Application.Services;
 using ProjetoUsuario.Persistence.Context;
 using ProjetoUsuario.Persistence.Repository;
+using ProjetoUsuario.Persistence.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,9 @@ builder.Services.AddSwaggerGen();
 // Dependency Injection
 builder.Services.AddScoped<IPerfilService, PerfilService>();
 builder.Services.AddScoped<IPerfilRepository, PerfilRepository>();
+
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 var app = builder.Build();
 

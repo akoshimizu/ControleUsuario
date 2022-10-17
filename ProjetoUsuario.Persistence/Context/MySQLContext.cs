@@ -12,21 +12,6 @@ namespace ProjetoUsuario.Persistence.Context
         public MySQLContext(DbContextOptions<MySQLContext>options) : base(options) {}
 
         public DbSet<Perfil> Perfis {get; set;}
-
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     modelBuilder.Entity<Perfil>()
-        //         .Property(p => p.Id)
-        //         .HasMaxLength(10);
-
-        //     modelBuilder.Entity<Perfil>()
-        //         .Property(p => p.DescricaoPerfil)
-        //         .HasMaxLength(100);
-
-        //     modelBuilder.Entity<Perfil>()
-        //         .Property(p => p.IndicadorPerfil)
-        //         .HasMaxLength(1);
-            
-        // }
+        public DbSet<Usuario> Usuarios {get; set;}
     }
 }
