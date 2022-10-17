@@ -33,10 +33,18 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Usuario UpdateUsuario(Usuario usuario)
         {
+            Usuario user = new Usuario();
             var usuarioAtualizado = _context.Usuarios.SingleOrDefault(u => u.Id.Equals(usuario.Id));
             if (usuarioAtualizado is not null)
             {
-                _context.Entry(usuarioAtualizado).CurrentValues.SetValues(usuario);
+                user.Id = usuario.Id;
+                user.NomeUsuario = usuario.NomeUsuario;
+                user.Email = usuarioAtualizado.Email;
+                user.CodMesa = usuario.CodMesa;
+                user.CodPerfil = usuario.CodPerfil;
+                user.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
+                _context.Entry(usuarioAtualizado).CurrentValues.SetValues(user);
+
                 _context.SaveChanges();
                 return usuarioAtualizado;
             }

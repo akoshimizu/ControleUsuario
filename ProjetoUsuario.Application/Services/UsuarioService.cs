@@ -48,12 +48,12 @@ namespace ProjetoUsuario.Application.Services
             Usuario usuario = new Usuario();
             usuario.Id = usuarioDTO.Id;
             usuario.NomeUsuario = usuarioDTO.NomeUsuario;
-            usuario.Email = usuarioDTO.Email;
+            //usuario.Email = usuarioDTO.Email;
             usuario.CodPerfil = usuarioDTO.CodPerfil;
             usuario.CodMesa = usuarioDTO.CodMesa;
             usuario.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
 
-            var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(usuario);
+            //var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(usuario);
 
             var usuarioAtualizado = _usuarioRepository.UpdateUsuario(usuario);
             return usuarioAtualizado;
