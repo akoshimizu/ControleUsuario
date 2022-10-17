@@ -33,7 +33,7 @@ namespace ProjetoUsuario.API.Controllers
         {
             if(perfil.Equals(null)) return BadRequest();
             var perfilCriado = _perfil.Create(perfil); 
-            if(perfilCriado.Equals(null)) return BadRequest("perfil existente");
+            if(perfilCriado is null) return BadRequest("perfil existente");
             return Ok(perfilCriado);
         }
 
