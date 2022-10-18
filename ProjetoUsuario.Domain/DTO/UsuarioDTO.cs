@@ -7,7 +7,7 @@ namespace ProjetoUsuario.Domain.DTO
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Insira o nome de usuário")]
-        [StringLength(50, ErrorMessage = "Max 50 Caracteres")]
+        [StringLength(255, ErrorMessage = "Max 255 Caracteres")]
         public string NomeUsuario { get; set; }
 
         [Required(ErrorMessage = "Insira o código do Perfil")]
@@ -16,6 +16,7 @@ namespace ProjetoUsuario.Domain.DTO
         [Required(ErrorMessage = "Insira um email")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Insira um email válido")]
+        [StringLength(255, ErrorMessage = "Max 255 Caracteres")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Insira o código da mesa")]

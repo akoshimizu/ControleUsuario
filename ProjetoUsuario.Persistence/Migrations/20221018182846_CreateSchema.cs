@@ -14,6 +14,24 @@ namespace ProjetoUsuario.Persistence.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "mesa",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    descricao_mesa = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    indicador_mesa = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    data_criacao_mesa = table.Column<DateTime>(type: "datetime", nullable: false),
+                    data_ultima_alteracao_mesa = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_mesa", x => x.id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "perfil",
                 columns: table => new
                 {
@@ -64,6 +82,9 @@ namespace ProjetoUsuario.Persistence.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "mesa");
+
             migrationBuilder.DropTable(
                 name: "usuario");
 

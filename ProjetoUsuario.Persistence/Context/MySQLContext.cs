@@ -13,5 +13,6 @@ namespace ProjetoUsuario.Persistence.Context
 
         public DbSet<Perfil> Perfis {get; set;}
         public DbSet<Usuario> Usuarios {get; set;}
+        public DbSet<Mesa> Mesas { get; set; }
     }
 }

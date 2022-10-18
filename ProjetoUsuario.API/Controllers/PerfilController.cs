@@ -5,7 +5,7 @@ using ProjetoUsuario.Domain.DTO;
 namespace ProjetoUsuario.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PerfilController : ControllerBase
     {
         private readonly IPerfilService _perfil;
@@ -14,13 +14,13 @@ namespace ProjetoUsuario.API.Controllers
             _perfil = perfil;
         }
 
-        [HttpGet]
+        [HttpGet("ListarPerfis")]
         public IActionResult FindAllPerfil()
         {
             return Ok(_perfil.FindAllPerfil());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BuscarPefilPorId/{id}")]
         public IActionResult FindById(int id)
         {
             var perfil = _perfil.FindById(id);
@@ -28,7 +28,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(perfil);
         }
 
-        [HttpPost]
+        [HttpPost("CriarPerfil")]
         public IActionResult CreatePerfil([FromBody] PerfilDTO perfil)
         {
             if(perfil.Equals(null)) return BadRequest();
@@ -37,7 +37,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(perfilCriado);
         }
 
-        [HttpPut]
+        [HttpPut("AtualizarPerfil")]
         public IActionResult UpdatePerfil([FromBody] PerfilDTO perfil)
         {
             if(perfil.Equals(null)) return BadRequest();
@@ -45,7 +45,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(perfilAtualizado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DesativarPerfil{id}")]
         public IActionResult DeletePerfil(int id)
         {
             _perfil.DeletePerfil(id);

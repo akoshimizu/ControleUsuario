@@ -26,6 +26,9 @@ builder.Services.AddScoped<IPerfilRepository, PerfilRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
+builder.Services.AddScoped<IMesaService, MesaService>();
+builder.Services.AddScoped<IMesaRepository, MesaRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

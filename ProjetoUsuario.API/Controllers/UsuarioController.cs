@@ -5,7 +5,7 @@ using ProjetoUsuario.Domain.DTO;
 namespace ProjetoUsuario.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuario;
@@ -23,7 +23,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuarios);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("BuscarUsuarioPorId/{id}")]
         public IActionResult BuscarUsuarioPorId(int id)
         {
             var usuario = _usuario.FindById(id);
@@ -31,7 +31,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost]
+        [HttpPost("CriarUsuario")]
         public IActionResult CriarUsuario([FromBody] UsuarioDTO usuario)
         {
             if(usuario is null) return BadRequest();
@@ -40,7 +40,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuario);
         }
 
-        [HttpPut]
+        [HttpPut("AtualizarUsuario")]
         public IActionResult AtualizarUsuario([FromBody] UsuarioDTO usuarioDTO)
         {
             if(usuarioDTO is null) return BadRequest();
@@ -48,7 +48,7 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuarioAtualizado);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DesativarUsuario/{id}")]
         public IActionResult DesativarUsuario(int id)
         {
             _usuario.DeleteUsuario(id);

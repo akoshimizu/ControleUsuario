@@ -11,7 +11,7 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221017180603_CreateSchema")]
+    [Migration("20221018182846_CreateSchema")]
     partial class CreateSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,34 @@ namespace ProjetoUsuario.Persistence.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Mesa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("DataDeCriacaoMesa")
+                        .HasColumnType("datetime")
+                        .HasColumnName("data_criacao_mesa");
+
+                    b.Property<DateTime>("DataUltimaAlteracaoMesa")
+                        .HasColumnType("datetime")
+                        .HasColumnName("data_ultima_alteracao_mesa");
+
+                    b.Property<string>("DescricaoMesa")
+                        .HasColumnType("longtext")
+                        .HasColumnName("descricao_mesa");
+
+                    b.Property<bool>("IndicadorMesaAtiva")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("indicador_mesa");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("mesa");
+                });
 
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Perfil", b =>
                 {
