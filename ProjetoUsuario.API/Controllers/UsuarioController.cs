@@ -18,13 +18,16 @@ namespace ProjetoUsuario.API.Controllers
         [HttpGet]
         public IActionResult BuscarTodosUsuarios()
         {
-            return Ok(_usuario.FindAllUsuario());
+            var usuarios = _usuario.FindAllUsuario();
+            if(usuarios is null) return NotFound("Nenhum usuario encotrado"); 
+            return Ok(usuarios);
         }
 
         [HttpGet("{id}")]
         public IActionResult BuscarUsuarioPorId(int id)
         {
             var usuario = _usuario.FindById(id);
+            if (usuario is null) return NotFound("Usuário não encontrado!");
             return Ok(usuario);
         }
 

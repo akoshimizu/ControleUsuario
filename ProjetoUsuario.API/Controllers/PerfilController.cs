@@ -24,7 +24,7 @@ namespace ProjetoUsuario.API.Controllers
         public IActionResult FindById(int id)
         {
             var perfil = _perfil.FindById(id);
-            if(perfil.Equals(null)) return NotFound();
+            if(perfil is null) return NotFound("Perfil não encontrado");
             return Ok(perfil);
         }
 

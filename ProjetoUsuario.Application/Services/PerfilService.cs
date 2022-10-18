@@ -40,6 +40,7 @@ namespace ProjetoUsuario.Application.Services
         public Perfil FindById(int id)
         {
             var perfil = _perfilRepository.FindById(id);
+            if(perfil is null) return null;
             return perfil;
         }
 
