@@ -49,8 +49,9 @@ namespace ProjetoUsuario.API.Controllers
         [HttpDelete("DesativarMesa/{id}")]
         public IActionResult DesativarMesa(int id)
         {
-            _mesaService.DeleteMesa(id);
-            return NoContent(); 
+            var mesaDeletada = _mesaService.DeleteMesa(id);
+            if(mesaDeletada is null) return BadRequest("Mesa com vínculo");
+            return Ok(mesaDeletada); 
         }
     }
 }

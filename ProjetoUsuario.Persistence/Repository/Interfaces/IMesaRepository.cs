@@ -9,7 +9,7 @@ namespace ProjetoUsuario.Persistence.Repository.Interfaces
         List<Mesa> FindAllMesa();
         Mesa Create(Mesa mesa);
         Mesa UpdateMesa(MesaDTO mesa);
-        void DeleteMesa(int id);
+        Mesa DeleteMesa(int id);
         bool VerificaDuplicidadeMesa(Mesa Usuario);
     }
 }

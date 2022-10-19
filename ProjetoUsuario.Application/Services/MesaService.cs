@@ -19,9 +19,10 @@ namespace ProjetoUsuario.Application.Services
             return mesaAtualizada;
         }
 
-        public void DeleteMesa(int id)
+        public Mesa DeleteMesa(int id)
         {
-            _mesaRepository.DeleteMesa(id);
+            var mesaDeletada = _mesaRepository.DeleteMesa(id);
+            return mesaDeletada;
         }
 
         public List<Mesa> FindAllMesa()
@@ -40,11 +41,6 @@ namespace ProjetoUsuario.Application.Services
         {
             var mesaAtualizada = _mesaRepository.UpdateMesa(mesa);
             return mesaAtualizada;
-        }
-
-        public bool VerificaDuplicidadeMesa(Mesa Usuario)
-        {
-            throw new NotImplementedException();
         }
     }
 }

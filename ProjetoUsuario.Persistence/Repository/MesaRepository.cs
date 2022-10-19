@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ProjetoUsuario.Domain.DTO;
 using ProjetoUsuario.Domain.Entidades;
 using ProjetoUsuario.Persistence.Context;
@@ -48,11 +49,18 @@ namespace ProjetoUsuario.Persistence.Repository
             return mesaAtualizada;
         }
 
-        public void DeleteMesa(int id)
+        public Mesa DeleteMesa(int id)
         {
+            var mesaVinculada = _context.Usuarios.Include(m => m.Mesa).ToList();
+            foreach (var item in mesaVinculada)
+            {
+                if(item.Mesa.Id.Equals(id)) return null;
+            }
+
             var mesaDesativada = _context.Mesas.SingleOrDefault(m => m.Id.Equals(id));
             mesaDesativada.IndicadorMesaAtiva = false;
             _context.SaveChanges();
+            return mesaDesativada;
         }
 
         public bool VerificaDuplicidadeMesa(Mesa usuario)

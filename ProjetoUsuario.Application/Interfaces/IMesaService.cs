@@ -9,7 +9,6 @@ namespace ProjetoUsuario.Application.Interfaces
         List<Mesa> FindAllMesa();
         Mesa Create(MesaDTO mesa);
         Mesa UpdateMesa(MesaDTO mesa);
-        void DeleteMesa(int id);
-        bool VerificaDuplicidadeMesa(Mesa Usuario);
+        Mesa DeleteMesa(int id);
     }
 }
