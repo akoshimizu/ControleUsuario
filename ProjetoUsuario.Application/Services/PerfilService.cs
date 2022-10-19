@@ -55,9 +55,10 @@ namespace ProjetoUsuario.Application.Services
             return perfilAtualizado;
         }
 
-        public void DeletePerfil(int id)
+        public Perfil DeletePerfil(int id)
         {
-            _perfilRepository.DeletePerfil(id);
+            var perfilDeletado =_perfilRepository.DeletePerfil(id);
+            return perfilDeletado;
         }
     }
 }

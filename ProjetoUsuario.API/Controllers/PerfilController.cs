@@ -48,8 +48,9 @@ namespace ProjetoUsuario.API.Controllers
         [HttpDelete("DesativarPerfil{id}")]
         public IActionResult DeletePerfil(int id)
         {
-            _perfil.DeletePerfil(id);
-            return NoContent();
+            var perfilDeletado = _perfil.DeletePerfil(id);
+            if (perfilDeletado is null) return BadRequest("Perfil com vínculo");
+            return Ok(perfilDeletado);
         }
     }
 }

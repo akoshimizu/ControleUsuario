@@ -9,6 +9,6 @@ namespace ProjetoUsuario.Application.Interfaces
         List<Perfil> FindAllPerfil();
         Perfil Create(PerfilDTO perfil);
         Perfil UpdatePerfil(PerfilDTO perfil);
-        void DeletePerfil(int id);
+        Perfil DeletePerfil(int id);
     }
 }

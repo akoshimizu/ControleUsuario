@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ProjetoUsuario.Domain.Entidades;
 using ProjetoUsuario.Persistence.Context;
 
@@ -55,8 +56,15 @@ namespace ProjetoUsuario.Persistence.Repository
             return null;
         }
 
-        public void DeletePerfil(int id)
+        public Perfil DeletePerfil(int id)
         {
+
+            var usuarioVinculado = _context.Usuarios.Include(p => p.Perfil).ToList();
+            foreach (var item in usuarioVinculado)
+            {
+                if(item.Perfil.Id.Equals(id)) return null;
+            }
+
             var perfilDeletado = _context.Perfis.SingleOrDefault(p => p.Id == id);
             if(perfilDeletado != null)
             {
@@ -64,6 +72,7 @@ namespace ProjetoUsuario.Persistence.Repository
                 {
                     _context.Remove(perfilDeletado);
                     _context.SaveChanges();
+                    return perfilDeletado;
                 }
                 catch (System.Exception)
                 {
@@ -71,6 +80,7 @@ namespace ProjetoUsuario.Persistence.Repository
                     throw;
                 }
             }
+            return null;
         }
 
         public bool VerificaDuplicidadePerfil(Perfil perfil)
