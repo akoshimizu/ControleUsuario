@@ -17,8 +17,8 @@ namespace ProjetoUsuario.Domain.Entidades
         [Column("email")]
         public string Email { get; set; }
 
-        [Column("codigo_mesa")]
-        public int CodMesa { get; set; }
+        [Column("MesaId")]
+        public Mesa Mesa { get; set; }
 
         [Column("indicador_usuario")]
         public bool IndicadorUsuarioAtivo { get; set; }

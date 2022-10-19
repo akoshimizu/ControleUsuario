@@ -60,12 +60,17 @@ namespace ProjetoUsuario.Persistence.Migrations
                     PerfilId = table.Column<int>(type: "int", nullable: true),
                     email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    codigo_mesa = table.Column<int>(type: "int", nullable: false),
+                    MesaId = table.Column<int>(type: "int", nullable: true),
                     indicador_usuario = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_usuario", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_usuario_mesa_MesaId",
+                        column: x => x.MesaId,
+                        principalTable: "mesa",
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "FK_usuario_perfil_PerfilId",
                         column: x => x.PerfilId,
@@ -73,6 +78,11 @@ namespace ProjetoUsuario.Persistence.Migrations
                         principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_usuario_MesaId",
+                table: "usuario",
+                column: "MesaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_usuario_PerfilId",
@@ -83,10 +93,10 @@ namespace ProjetoUsuario.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "mesa");
+                name: "usuario");
 
             migrationBuilder.DropTable(
-                name: "usuario");
+                name: "mesa");
 
             migrationBuilder.DropTable(
                 name: "perfil");

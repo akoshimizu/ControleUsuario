@@ -24,7 +24,7 @@ namespace ProjetoUsuario.Persistence.Repository
                 criarUsuario.NomeUsuario = usuario.NomeUsuario;
                 criarUsuario.Email  = usuario.Email;
                 criarUsuario.Perfil = _context.Perfis.First(per => per.Id.Equals(usuario.CodPerfil));
-                criarUsuario.CodMesa = usuario.CodMesa;
+                criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
                 criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
 
                 bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
@@ -45,7 +45,7 @@ namespace ProjetoUsuario.Persistence.Repository
         {
             try
             {
-                return _context.Usuarios.Include(p => p.Perfil).ToList();
+                return _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).ToList();
                 
             }
             catch (System.Exception)
@@ -57,7 +57,7 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Usuario FindById(int id)
         {
-            var usuario = _context.Usuarios.Include(p => p.Perfil).FirstOrDefault(u => u.Id.Equals(id));
+            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).FirstOrDefault(u => u.Id.Equals(id));
             if(usuario is null) return null;
             return usuario;
         }
@@ -92,7 +92,7 @@ namespace ProjetoUsuario.Persistence.Repository
             // }
             // return null;
 
-            var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
+            var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
             if(usuarioAtualizado is not null)
             {
                 try
@@ -101,7 +101,7 @@ namespace ProjetoUsuario.Persistence.Repository
                     usuarioAtualizado.NomeUsuario = usuarioDTO.NomeUsuario;
                     //usuarioAtualizado.Email = usuarioDTO.Email;
                     usuarioAtualizado.Perfil = _context.Perfis.First(p => p.Id.Equals(usuarioDTO.CodPerfil));
-                    usuarioAtualizado.CodMesa = usuarioDTO.CodMesa;
+                    usuarioAtualizado.Mesa = _context.Mesas.First(m => m.Id.Equals(usuarioDTO.CodMesa));
                     usuarioAtualizado.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
                     _context.SaveChanges();
                     return usuarioAtualizado;

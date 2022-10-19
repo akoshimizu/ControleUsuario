@@ -11,7 +11,7 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221018182846_CreateSchema")]
+    [Migration("20221019135844_CreateSchema")]
     partial class CreateSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,10 +84,6 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int>("CodMesa")
-                        .HasColumnType("int")
-                        .HasColumnName("codigo_mesa");
-
                     b.Property<string>("Email")
                         .HasColumnType("longtext")
                         .HasColumnName("email");
@@ -95,6 +91,9 @@ namespace ProjetoUsuario.Persistence.Migrations
                     b.Property<bool>("IndicadorUsuarioAtivo")
                         .HasColumnType("tinyint(1)")
                         .HasColumnName("indicador_usuario");
+
+                    b.Property<int?>("MesaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("NomeUsuario")
                         .HasColumnType("longtext")
@@ -105,6 +104,8 @@ namespace ProjetoUsuario.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("MesaId");
+
                     b.HasIndex("PerfilId");
 
                     b.ToTable("usuario");
@@ -112,9 +113,15 @@ namespace ProjetoUsuario.Persistence.Migrations
 
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Usuario", b =>
                 {
+                    b.HasOne("ProjetoUsuario.Domain.Entidades.Mesa", "Mesa")
+                        .WithMany()
+                        .HasForeignKey("MesaId");
+
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Perfil", "Perfil")
                         .WithMany()
                         .HasForeignKey("PerfilId");
+
+                    b.Navigation("Mesa");
 
                     b.Navigation("Perfil");
                 });
