@@ -27,6 +27,9 @@ namespace ProjetoUsuario.Persistence.Repository
                 criarUsuario.CodMesa = usuario.CodMesa;
                 criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
 
+                bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
+                if(usuarioValido is true) return null;
+
                 _context.Add(criarUsuario);
                 _context.SaveChanges();
                 return criarUsuario;
@@ -36,18 +39,6 @@ namespace ProjetoUsuario.Persistence.Repository
                 
                 throw;
             }
-            
-
-
-            // bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
-            // if(usuarioValido.Equals(false))
-            // {
-            // _context.Add(criarUsuario);
-            // _context.SaveChanges();
-            // return criarUsuario;
-
-            // }
-            // return null;
         }
 
         public List<Usuario> FindAllUsuario()
@@ -134,7 +125,7 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public bool VerificaDuplicidadeUsuario(Usuario usuario)
         {
-            List<Usuario> listaUsuario = _context.Usuarios.ToList();
+            var listaUsuario = _context.Usuarios.Include(p => p.Perfil).ToList();
             foreach (var item in listaUsuario)
             {
                 if(item.Email.ToLower().Contains(usuario.Email.ToLower()))
