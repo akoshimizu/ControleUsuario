@@ -54,5 +54,12 @@ namespace ProjetoUsuario.API.Controllers
             _usuario.DeleteUsuario(id);
             return NoContent();
         }
+
+        [HttpPut("AdicionarMesa")]
+        public IActionResult AdicionarMesa([FromQuery] int id, MesaDTO mesa)
+        {
+            var mesaAdicionada = _usuario.AdicionarMesa(id, mesa);
+            return Ok(mesa);
+        }
     }
 }

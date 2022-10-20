@@ -20,6 +20,9 @@ namespace ProjetoUsuario.Domain.Entidades
         [Column("MesaId")]
         public Mesa Mesa { get; set; }
 
+        [Column("ListaMesasId")]
+        public List<MesaUsuario> MesasdoUsuario { get; set; }
+
         [Column("indicador_usuario")]
         public bool IndicadorUsuarioAtivo { get; set; }
     }

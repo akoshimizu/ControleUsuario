@@ -57,7 +57,9 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Usuario FindById(int id)
         {
-            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).FirstOrDefault(u => u.Id.Equals(id));
+            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).Include(mu => mu.MesasdoUsuario).FirstOrDefault(u => u.Id.Equals(id));
+            // usuario.MesasdoUsuario = _context.MesaUsuarios.Where(m => m.Usuario.Equals(usuario.Id)).Include(m => m.Mesa).ToList();
+            usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
             if(usuario is null) return null;
             return usuario;
         }
@@ -134,6 +136,21 @@ namespace ProjetoUsuario.Persistence.Repository
                 }
             }
             return false;
+        }
+
+        public MesaDTO AdicionarMesa(int id, MesaDTO mesa)
+        {
+            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).Include(mu => mu.MesasdoUsuario).SingleOrDefault(u => u.Id.Equals(id));
+            var mesaAdicionada = _context.Mesas.First(m => m.Id.Equals(mesa.Id));
+
+            //usuario.ListaDeMesas.Add(_context.Mesas.First(m => m.Id.Equals(mesa.Id)));
+
+            MesaUsuario mesaUsuario = new MesaUsuario();
+            mesaUsuario.Usuario = usuario;
+            mesaUsuario.Mesa = mesaAdicionada;
+            _context.Add(mesaUsuario);
+            _context.SaveChanges();
+            return mesa;
         }
     }
 }

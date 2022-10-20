@@ -51,5 +51,11 @@ namespace ProjetoUsuario.Application.Services
         {
             _usuarioRepository.DeleteUsuario(id);
         }
+
+        public MesaDTO AdicionarMesa(int id, MesaDTO mesa)
+        {
+            var mesaAdicionada = _usuarioRepository.AdicionarMesa(id, mesa);
+            return mesaAdicionada;
+        }
     }
 }
