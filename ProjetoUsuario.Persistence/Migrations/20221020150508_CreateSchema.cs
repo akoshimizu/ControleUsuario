@@ -85,35 +85,34 @@ namespace ProjetoUsuario.Persistence.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UsuarioRefId = table.Column<int>(type: "int", nullable: true),
-                    MesaRefId = table.Column<int>(type: "int", nullable: true)
+                    UsuarioId = table.Column<int>(type: "int", nullable: true),
+                    MesaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_mesa_usuario", x => x.id);
                     table.ForeignKey(
-                        name: "FK_mesa_usuario_mesa_MesaRefId",
-                        column: x => x.MesaRefId,
+                        name: "FK_mesa_usuario_mesa_MesaId",
+                        column: x => x.MesaId,
                         principalTable: "mesa",
                         principalColumn: "id");
                     table.ForeignKey(
-                        name: "FK_mesa_usuario_usuario_UsuarioRefId",
-                        column: x => x.UsuarioRefId,
+                        name: "FK_mesa_usuario_usuario_UsuarioId",
+                        column: x => x.UsuarioId,
                         principalTable: "usuario",
                         principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_mesa_usuario_MesaRefId",
+                name: "IX_mesa_usuario_MesaId",
                 table: "mesa_usuario",
-                column: "MesaRefId");
+                column: "MesaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_mesa_usuario_UsuarioRefId",
+                name: "IX_mesa_usuario_UsuarioId",
                 table: "mesa_usuario",
-                column: "UsuarioRefId",
-                unique: true);
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_usuario_MesaId",

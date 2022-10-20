@@ -11,8 +11,8 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221020133002_CreateSchema")]
-    partial class CreateSchema
+    [Migration("20221020161335_DadosNoDb")]
+    partial class DadosNoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,18 +56,17 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int?>("MesaRefId")
+                    b.Property<int?>("MesaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioRefId")
+                    b.Property<int?>("UsuarioId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MesaRefId");
+                    b.HasIndex("MesaId");
 
-                    b.HasIndex("UsuarioRefId")
-                        .IsUnique();
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("mesa_usuario");
                 });
@@ -138,11 +137,11 @@ namespace ProjetoUsuario.Persistence.Migrations
                 {
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Mesa", "Mesa")
                         .WithMany()
-                        .HasForeignKey("MesaRefId");
+                        .HasForeignKey("MesaId");
 
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Usuario", "Usuario")
-                        .WithOne("MesasdoUsuario")
-                        .HasForeignKey("ProjetoUsuario.Domain.Entidades.MesaUsuario", "UsuarioRefId");
+                        .WithMany("MesasdoUsuario")
+                        .HasForeignKey("UsuarioId");
 
                     b.Navigation("Mesa");
 
