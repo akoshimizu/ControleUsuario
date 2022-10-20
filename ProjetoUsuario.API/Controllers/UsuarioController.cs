@@ -66,6 +66,7 @@ namespace ProjetoUsuario.API.Controllers
         public IActionResult AdicionarMesa([FromQuery] int id, MesaDTO mesa)
         {
             var mesaAdicionada = _usuario.AdicionarMesa(id, mesa);
+            if(mesaAdicionada is null) return BadRequest("Não é possível adicionar mais mesas");
             return Ok(mesa);
         }
     }

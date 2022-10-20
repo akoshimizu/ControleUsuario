@@ -109,10 +109,13 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public MesaDTO AdicionarMesa(int id, MesaDTO mesa)
         {
+            var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
+            if(mesasDoUsuario.Count() >=10) return null;
+
             var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).Include(mu => mu.MesasdoUsuario).SingleOrDefault(u => u.Id.Equals(id));
             var mesaAdicionada = _context.Mesas.First(m => m.Id.Equals(mesa.Id));
-
-            //usuario.ListaDeMesas.Add(_context.Mesas.First(m => m.Id.Equals(mesa.Id)));
+            
+            //if(usuario.Mesa.Id.Equals(mesa.Id))return null;     //PRECISA ARRUMAR,   VOLTA NULO MAS DEVE MOSTRAR MENSAGEM DE MESA EXISTENTE.
 
             MesaUsuario mesaUsuario = new MesaUsuario();
             mesaUsuario.Usuario = usuario;
