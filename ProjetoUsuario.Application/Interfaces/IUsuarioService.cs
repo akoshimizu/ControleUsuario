@@ -11,5 +11,6 @@ namespace ProjetoUsuario.Application.Interfaces
         Usuario AtualizarUsuario(UsuarioDTO Usuario);
         void DesativarUsuario(int id);
         MesaDTO AdicionarMesa(int id, MesaDTO mesa);
+        List<MesaUsuario> BuscarMesasDoUsuario(int id);
     }
 }

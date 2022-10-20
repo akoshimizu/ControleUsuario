@@ -31,6 +31,13 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuario);
         }
 
+        [HttpGet("BuscarMesasDoUsuario/{id}")]
+        public IActionResult BuscarMesasDoUsuario(int id)
+        {
+            var mesasDoUsuario = _usuario.BuscarMesasDoUsuario(id);
+            return Ok(mesasDoUsuario);
+        }
+
         [HttpPost("CriarUsuario")]
         public IActionResult CriarUsuario([FromBody] UsuarioDTO usuario)
         {

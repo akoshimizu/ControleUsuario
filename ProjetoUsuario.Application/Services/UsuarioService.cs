@@ -25,6 +25,11 @@ namespace ProjetoUsuario.Application.Services
             return _usuarioRepository.BuscarUsuarioPorId(id);
         }
 
+        public List<MesaUsuario> BuscarMesasDoUsuario(int id)
+        {
+            return _usuarioRepository.BuscarMesasDoUsuario(id);
+        }
+
         public Usuario CriarUsuario(UsuarioDTO usuario)
         {
                 var usuarioAtualizado = _usuarioRepository.CriarUsuario(usuario);

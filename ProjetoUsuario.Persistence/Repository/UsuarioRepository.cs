@@ -55,6 +55,12 @@ namespace ProjetoUsuario.Persistence.Repository
             return usuario;
         }
 
+        public List<MesaUsuario> BuscarMesasDoUsuario(int id)
+        {
+            var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
+            return mesasDoUsuario;
+        }
+
         public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
         {
             var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
