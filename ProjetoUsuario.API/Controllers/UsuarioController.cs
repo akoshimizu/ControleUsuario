@@ -18,7 +18,7 @@ namespace ProjetoUsuario.API.Controllers
         [HttpGet]
         public IActionResult BuscarTodosUsuarios()
         {
-            var usuarios = _usuario.FindAllUsuario();
+            var usuarios = _usuario.BuscarTodosUsuarios();
             if(usuarios is null) return NotFound("Nenhum usuario encotrado"); 
             return Ok(usuarios);
         }
@@ -26,7 +26,7 @@ namespace ProjetoUsuario.API.Controllers
         [HttpGet("BuscarUsuarioPorId/{id}")]
         public IActionResult BuscarUsuarioPorId(int id)
         {
-            var usuario = _usuario.FindById(id);
+            var usuario = _usuario.BuscarUsuarioId(id);
             if (usuario is null) return NotFound("Usuário não encontrado!");
             return Ok(usuario);
         }
@@ -35,7 +35,7 @@ namespace ProjetoUsuario.API.Controllers
         public IActionResult CriarUsuario([FromBody] UsuarioDTO usuario)
         {
             if(usuario is null) return BadRequest();
-            var usuarioCriado = _usuario.Create(usuario);
+            var usuarioCriado = _usuario.CriarUsuario(usuario);
             if(usuarioCriado is null) return BadRequest("usuário existente");
             return Ok(usuario);
         }
@@ -44,14 +44,14 @@ namespace ProjetoUsuario.API.Controllers
         public IActionResult AtualizarUsuario([FromBody] UsuarioDTO usuarioDTO)
         {
             if(usuarioDTO is null) return BadRequest();
-            var usuarioAtualizado = _usuario.UpdateUsuario(usuarioDTO);
+            var usuarioAtualizado = _usuario.AtualizarUsuario(usuarioDTO);
             return Ok(usuarioAtualizado);
         }
 
         [HttpDelete("DesativarUsuario/{id}")]
         public IActionResult DesativarUsuario(int id)
         {
-            _usuario.DeleteUsuario(id);
+            _usuario.DesativarUsuario(id);
             return NoContent();
         }
 

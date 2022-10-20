@@ -54,17 +54,17 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int?>("MesaId")
+                    b.Property<int?>("MesaRefId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioId")
+                    b.Property<int?>("UsuarioRefId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MesaId");
+                    b.HasIndex("MesaRefId");
 
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("UsuarioRefId");
 
                     b.ToTable("mesa_usuario");
                 });
@@ -135,11 +135,11 @@ namespace ProjetoUsuario.Persistence.Migrations
                 {
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Mesa", "Mesa")
                         .WithMany()
-                        .HasForeignKey("MesaId");
+                        .HasForeignKey("MesaRefId");
 
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Usuario", "Usuario")
                         .WithMany("MesasdoUsuario")
-                        .HasForeignKey("UsuarioId");
+                        .HasForeignKey("UsuarioRefId");
 
                     b.Navigation("Mesa");
 

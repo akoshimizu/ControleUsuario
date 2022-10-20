@@ -15,23 +15,23 @@ namespace ProjetoUsuario.Application.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public List<Usuario> FindAllUsuario()
+        public List<Usuario> BuscarTodosUsuarios()
         {
-            return _usuarioRepository.FindAllUsuario();
+            return _usuarioRepository.BuscarTodosUsuarios();
         }
 
-        public Usuario FindById(int id)
+        public Usuario BuscarUsuarioId(int id)
         {
-            return _usuarioRepository.FindById(id);
+            return _usuarioRepository.BuscarUsuarioPorId(id);
         }
 
-        public Usuario Create(UsuarioDTO usuario)
+        public Usuario CriarUsuario(UsuarioDTO usuario)
         {
-                var usuarioAtualizado = _usuarioRepository.Create(usuario);
+                var usuarioAtualizado = _usuarioRepository.CriarUsuario(usuario);
                 return usuarioAtualizado;
         }
 
-        public Usuario UpdateUsuario(UsuarioDTO usuarioDTO)
+        public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
         {
             // Usuario usuario = new Usuario();
             // usuario.Id = usuarioDTO.Id;
@@ -43,13 +43,13 @@ namespace ProjetoUsuario.Application.Services
 
             //var verificaUsuario = _usuarioRepository.VerificaDuplicidadeUsuario(usuario);
 
-            var usuarioAtualizado = _usuarioRepository.UpdateUsuario(usuarioDTO);
+            var usuarioAtualizado = _usuarioRepository.AtualizarUsuario(usuarioDTO);
             return usuarioAtualizado;
         }
 
-        public void DeleteUsuario(int id)
+        public void DesativarUsuario(int id)
         {
-            _usuarioRepository.DeleteUsuario(id);
+            _usuarioRepository.DeletarUsuario(id);
         }
 
         public MesaDTO AdicionarMesa(int id, MesaDTO mesa)

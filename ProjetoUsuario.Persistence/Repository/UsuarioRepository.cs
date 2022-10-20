@@ -15,7 +15,7 @@ namespace ProjetoUsuario.Persistence.Repository
             _context = context;
         }
         
-        public Usuario Create(UsuarioDTO usuario)
+        public Usuario CriarUsuario(UsuarioDTO usuario)
         {
             try
             {
@@ -41,59 +41,22 @@ namespace ProjetoUsuario.Persistence.Repository
             }
         }
 
-        public List<Usuario> FindAllUsuario()
+        public List<Usuario> BuscarTodosUsuarios()
         {
-            try
-            {
                 return _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).ToList();
-                
-            }
-            catch (System.Exception)
-            {
-                
-                throw;
-            }
         }
 
-        public Usuario FindById(int id)
+        public Usuario BuscarUsuarioPorId(int id)
         {
-            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).Include(mu => mu.MesasdoUsuario).FirstOrDefault(u => u.Id.Equals(id));
+            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).FirstOrDefault(u => u.Id.Equals(id));
             // usuario.MesasdoUsuario = _context.MesaUsuarios.Where(m => m.Usuario.Equals(usuario.Id)).Include(m => m.Mesa).ToList();
-            usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
+            //usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
             if(usuario is null) return null;
             return usuario;
         }
 
-        public Usuario UpdateUsuario(UsuarioDTO usuarioDTO)
+        public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
         {
-            // Usuario user = new Usuario();
-            // var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).First(u => u.Id.Equals(usuarioDTO.Id));
-            // var perfilAtualizado = _context.Perfis.First(p => p.Id.Equals(usuarioDTO.CodPerfil));
-            // if (usuarioAtualizado != null)
-            // {
-            //     user.Id = usuarioDTO.Id;
-            //     user.NomeUsuario = usuarioDTO.NomeUsuario;
-            //     user.Email = usuarioAtualizado.Email;
-            //     user.CodMesa = usuarioDTO.CodMesa;
-            //     // user.Perfil = _context.Perfis.FirstOrDefault(per => per.Id.Equals(usuarioDTO.CodPerfil));
-
-
-            //     user.Perfil = perfilAtualizado;
-            //     // user.Perfil.DescricaoPerfil = perfilAtualizado.DescricaoPerfil;
-            //     // user.Perfil.IndicadorPerfil = perfilAtualizado.IndicadorPerfil;
-            //     // user.Perfil.DataCriacaoPerfil = perfilAtualizado.DataCriacaoPerfil;
-            //     // user.Perfil.DataUltimaAtualizacao = perfilAtualizado.DataUltimaAtualizacao;
-
-
-            //     user.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
-            //     //_context.Update(usuarioAtualizado).CurrentValues.SetValues(user);
-            //     // usuarioAtualizado = user;
-            //     _context.Entry(usuarioAtualizado).CurrentValues.SetValues(user);
-            //     _context.SaveChanges();
-            //     return usuarioAtualizado;
-            // }
-            // return null;
-
             var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
             if(usuarioAtualizado is not null)
             {
@@ -117,7 +80,7 @@ namespace ProjetoUsuario.Persistence.Repository
             return null;
         }
 
-        public void DeleteUsuario(int id)
+        public void DeletarUsuario(int id)
         {
             var usuario = _context.Usuarios.SingleOrDefault(u => u.Id.Equals(id));
             
