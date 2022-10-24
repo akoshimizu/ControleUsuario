@@ -26,7 +26,7 @@ namespace ProjetoUsuario.Application.Services
             var verificaPefil = _perfilRepository.VerificaDuplicidadePerfil(criarPerfil);
             if(verificaPefil.Equals(false))
             {
-                var perfilAtualizado = _perfilRepository.Create(criarPerfil);
+                var perfilAtualizado = _perfilRepository.CriarPerfil(criarPerfil);
                 return perfilAtualizado;
             }
             return null;
@@ -34,12 +34,12 @@ namespace ProjetoUsuario.Application.Services
 
         public List<Perfil> FindAllPerfil()
         {
-            return _perfilRepository.FindAllPerfil();
+            return _perfilRepository.BuscarTodosPerfis();
         }
 
         public Perfil FindById(int id)
         {
-            var perfil = _perfilRepository.FindById(id);
+            var perfil = _perfilRepository.BuscarPerfilPorId(id);
             if(perfil is null) return null;
             return perfil;
         }
@@ -51,13 +51,13 @@ namespace ProjetoUsuario.Application.Services
             criarPerfil.DescricaoPerfil = perfil.DescricaoPerfil;
             criarPerfil.IndicadorPerfil  = perfil.IndicadorPerfil;
             criarPerfil.DataUltimaAtualizacao = DateTime.Now;
-            var perfilAtualizado = _perfilRepository.UpdatePerfil(criarPerfil);
+            var perfilAtualizado = _perfilRepository.AtualizarPerfil(criarPerfil);
             return perfilAtualizado;
         }
 
         public Perfil DeletePerfil(int id)
         {
-            var perfilDeletado =_perfilRepository.DeletePerfil(id);
+            var perfilDeletado =_perfilRepository.DeletarPerfil(id);
             return perfilDeletado;
         }
     }

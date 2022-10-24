@@ -15,7 +15,7 @@ namespace ProjetoUsuario.Persistence.Repository
             _context = context;
         }
         
-        public Usuario Create(UsuarioDTO usuario)
+        public Usuario CriarUsuario(UsuarioDTO usuario)
         {
             try
             {
@@ -41,57 +41,28 @@ namespace ProjetoUsuario.Persistence.Repository
             }
         }
 
-        public List<Usuario> FindAllUsuario()
+        public List<Usuario> BuscarTodosUsuarios()
         {
-            try
-            {
                 return _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).ToList();
-                
-            }
-            catch (System.Exception)
-            {
-                
-                throw;
-            }
         }
 
-        public Usuario FindById(int id)
+        public Usuario BuscarUsuarioPorId(int id)
         {
             var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).FirstOrDefault(u => u.Id.Equals(id));
+            // usuario.MesasdoUsuario = _context.MesaUsuarios.Where(m => m.Usuario.Equals(usuario.Id)).Include(m => m.Mesa).ToList();
+            //usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
             if(usuario is null) return null;
             return usuario;
         }
 
-        public Usuario UpdateUsuario(UsuarioDTO usuarioDTO)
+        public List<MesaUsuario> BuscarMesasDoUsuario(int id)
         {
-            // Usuario user = new Usuario();
-            // var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).First(u => u.Id.Equals(usuarioDTO.Id));
-            // var perfilAtualizado = _context.Perfis.First(p => p.Id.Equals(usuarioDTO.CodPerfil));
-            // if (usuarioAtualizado != null)
-            // {
-            //     user.Id = usuarioDTO.Id;
-            //     user.NomeUsuario = usuarioDTO.NomeUsuario;
-            //     user.Email = usuarioAtualizado.Email;
-            //     user.CodMesa = usuarioDTO.CodMesa;
-            //     // user.Perfil = _context.Perfis.FirstOrDefault(per => per.Id.Equals(usuarioDTO.CodPerfil));
+            var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
+            return mesasDoUsuario;
+        }
 
-
-            //     user.Perfil = perfilAtualizado;
-            //     // user.Perfil.DescricaoPerfil = perfilAtualizado.DescricaoPerfil;
-            //     // user.Perfil.IndicadorPerfil = perfilAtualizado.IndicadorPerfil;
-            //     // user.Perfil.DataCriacaoPerfil = perfilAtualizado.DataCriacaoPerfil;
-            //     // user.Perfil.DataUltimaAtualizacao = perfilAtualizado.DataUltimaAtualizacao;
-
-
-            //     user.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
-            //     //_context.Update(usuarioAtualizado).CurrentValues.SetValues(user);
-            //     // usuarioAtualizado = user;
-            //     _context.Entry(usuarioAtualizado).CurrentValues.SetValues(user);
-            //     _context.SaveChanges();
-            //     return usuarioAtualizado;
-            // }
-            // return null;
-
+        public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
+        {
             var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
             if(usuarioAtualizado is not null)
             {
@@ -115,7 +86,7 @@ namespace ProjetoUsuario.Persistence.Repository
             return null;
         }
 
-        public void DeleteUsuario(int id)
+        public void DeletarUsuario(int id)
         {
             var usuario = _context.Usuarios.SingleOrDefault(u => u.Id.Equals(id));
             
@@ -134,6 +105,24 @@ namespace ProjetoUsuario.Persistence.Repository
                 }
             }
             return false;
+        }
+
+        public MesaDTO AdicionarMesa(int id, MesaDTO mesa)
+        {
+            var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
+            if(mesasDoUsuario.Count() >=10) return null;
+
+            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).Include(mu => mu.MesasdoUsuario).SingleOrDefault(u => u.Id.Equals(id));
+            var mesaAdicionada = _context.Mesas.First(m => m.Id.Equals(mesa.Id));
+            
+            //if(usuario.Mesa.Id.Equals(mesa.Id))return null;     //PRECISA ARRUMAR,   VOLTA NULO MAS DEVE MOSTRAR MENSAGEM DE MESA EXISTENTE.
+
+            MesaUsuario mesaUsuario = new MesaUsuario();
+            mesaUsuario.Usuario = usuario;
+            mesaUsuario.Mesa = mesaAdicionada;
+            _context.Add(mesaUsuario);
+            _context.SaveChanges();
+            return mesa;
         }
     }
 }

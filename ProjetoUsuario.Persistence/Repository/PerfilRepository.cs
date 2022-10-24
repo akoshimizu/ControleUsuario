@@ -13,25 +13,25 @@ namespace ProjetoUsuario.Persistence.Repository
             _context = context;
         }
 
-        public Perfil Create(Perfil perfil)
+        public Perfil CriarPerfil(Perfil perfil)
         {
             _context.Perfis.Add(perfil);
             _context.SaveChanges();
             return perfil;
         }
 
-        public List<Perfil> FindAllPerfil()
+        public List<Perfil> BuscarTodosPerfis()
         {
             return _context.Perfis.ToList();
         }
 
-        public Perfil FindById(int id)
+        public Perfil BuscarPerfilPorId(int id)
         {
             var perfil = _context.Perfis.FirstOrDefault(p => p.Id.Equals(id));
             return perfil;
         }
 
-        public Perfil UpdatePerfil(Perfil perfil)
+        public Perfil AtualizarPerfil(Perfil perfil)
         {
             var perfilAtualizado = _context.Perfis.SingleOrDefault(p => p.Id ==perfil.Id);
             if(perfilAtualizado != null)
@@ -56,7 +56,7 @@ namespace ProjetoUsuario.Persistence.Repository
             return null;
         }
 
-        public Perfil DeletePerfil(int id)
+        public Perfil DeletarPerfil(int id)
         {
 
             var usuarioVinculado = _context.Usuarios.Include(p => p.Perfil).ToList();

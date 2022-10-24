@@ -4,11 +4,11 @@ namespace ProjetoUsuario.Persistence.Repository
 {
     public interface IPerfilRepository
     {
-        Perfil FindById(int id);
-        List<Perfil> FindAllPerfil();
-         Perfil Create(Perfil perfil);
-         Perfil UpdatePerfil(Perfil perfil);
-         Perfil DeletePerfil(int id);
+        Perfil BuscarPerfilPorId(int id);
+        List<Perfil> BuscarTodosPerfis();
+         Perfil CriarPerfil(Perfil perfil);
+         Perfil AtualizarPerfil(Perfil perfil);
+         Perfil DeletarPerfil(int id);
          bool VerificaDuplicidadePerfil(Perfil perfil);
     }
 }

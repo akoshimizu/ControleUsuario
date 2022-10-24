@@ -5,11 +5,13 @@ namespace ProjetoUsuario.Persistence.Repository.Interfaces
 {
     public interface IUsuarioRepository
     {
-        Usuario FindById(int id);
-        List<Usuario> FindAllUsuario();
-        Usuario Create(UsuarioDTO usuario);
-        Usuario UpdateUsuario(UsuarioDTO usuario);
-        void DeleteUsuario(int id);
+        Usuario BuscarUsuarioPorId(int id);
+        List<Usuario> BuscarTodosUsuarios();
+        Usuario CriarUsuario(UsuarioDTO usuario);
+        Usuario AtualizarUsuario(UsuarioDTO usuario);
+        void DeletarUsuario(int id);
         bool VerificaDuplicidadeUsuario(Usuario Usuario);
+        MesaDTO AdicionarMesa(int id, MesaDTO mesa);
+        List<MesaUsuario> BuscarMesasDoUsuario(int id);
     }
 }

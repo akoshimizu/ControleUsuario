@@ -5,11 +5,11 @@ namespace ProjetoUsuario.Persistence.Repository.Interfaces
 {
     public interface IMesaRepository
     {
-        Mesa FindById(int id);
-        List<Mesa> FindAllMesa();
-        Mesa Create(Mesa mesa);
-        Mesa UpdateMesa(MesaDTO mesa);
-        Mesa DeleteMesa(int id);
+        Mesa BuscarMesaPorId(int id);
+        List<Mesa> BuscarTodasMesas();
+        Mesa CriarMesa(Mesa mesa);
+        Mesa AtualizarMesa(MesaDTO mesa);
+        Mesa DeletarMesa(int id);
         bool VerificaDuplicidadeMesa(Mesa Usuario);
     }
 }

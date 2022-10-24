@@ -15,32 +15,32 @@ namespace ProjetoUsuario.Application.Services
         public Mesa Create(MesaDTO mesa)
         {
             Mesa novaMesa = new Mesa(mesa);             
-             var mesaAtualizada = _mesaRepository.Create(novaMesa);
+             var mesaAtualizada = _mesaRepository.CriarMesa(novaMesa);
             return mesaAtualizada;
-        }
-
-        public Mesa DeleteMesa(int id)
-        {
-            var mesaDeletada = _mesaRepository.DeleteMesa(id);
-            return mesaDeletada;
         }
 
         public List<Mesa> FindAllMesa()
         {
-            var listaMesas = _mesaRepository.FindAllMesa();
+            var listaMesas = _mesaRepository.BuscarTodasMesas();
             return listaMesas;
         }
 
         public Mesa FindById(int id)
         {
-            var mesa = _mesaRepository.FindById(id);
+            var mesa = _mesaRepository.BuscarMesaPorId(id);
             return mesa;
         }
 
         public Mesa UpdateMesa(MesaDTO mesa)
         {
-            var mesaAtualizada = _mesaRepository.UpdateMesa(mesa);
+            var mesaAtualizada = _mesaRepository.AtualizarMesa(mesa);
             return mesaAtualizada;
+        }
+
+        public Mesa DeleteMesa(int id)
+        {
+            var mesaDeletada = _mesaRepository.DeletarMesa(id);
+            return mesaDeletada;
         }
     }
 }

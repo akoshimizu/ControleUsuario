@@ -11,8 +11,8 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221019135844_CreateSchema")]
-    partial class CreateSchema
+    [Migration("20221020164721_DadosNoDb")]
+    partial class DadosNoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,28 @@ namespace ProjetoUsuario.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("mesa");
+                });
+
+            modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.MesaUsuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<int?>("MesaRefId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UsuarioRefId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MesaRefId");
+
+                    b.HasIndex("UsuarioRefId");
+
+                    b.ToTable("mesa_usuario");
                 });
 
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Perfil", b =>
@@ -111,6 +133,21 @@ namespace ProjetoUsuario.Persistence.Migrations
                     b.ToTable("usuario");
                 });
 
+            modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.MesaUsuario", b =>
+                {
+                    b.HasOne("ProjetoUsuario.Domain.Entidades.Mesa", "Mesa")
+                        .WithMany()
+                        .HasForeignKey("MesaRefId");
+
+                    b.HasOne("ProjetoUsuario.Domain.Entidades.Usuario", "Usuario")
+                        .WithMany("MesasdoUsuario")
+                        .HasForeignKey("UsuarioRefId");
+
+                    b.Navigation("Mesa");
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Usuario", b =>
                 {
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Mesa", "Mesa")
@@ -124,6 +161,11 @@ namespace ProjetoUsuario.Persistence.Migrations
                     b.Navigation("Mesa");
 
                     b.Navigation("Perfil");
+                });
+
+            modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Usuario", b =>
+                {
+                    b.Navigation("MesasdoUsuario");
                 });
 #pragma warning restore 612, 618
         }

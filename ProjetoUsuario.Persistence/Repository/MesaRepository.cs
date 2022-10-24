@@ -14,7 +14,7 @@ namespace ProjetoUsuario.Persistence.Repository
             _context = context;
         }
 
-        public Mesa Create(Mesa mesa)
+        public Mesa CriarMesa(Mesa mesa)
         {
             var duplicidade = VerificaDuplicidadeMesa(mesa);
             if(duplicidade) return null;
@@ -23,19 +23,19 @@ namespace ProjetoUsuario.Persistence.Repository
             return mesa;
         }
 
-        public List<Mesa> FindAllMesa()
+        public List<Mesa> BuscarTodasMesas()
         {
             var listaMesas = _context.Mesas.ToList();
             return listaMesas;
         }
 
-        public Mesa FindById(int id)
+        public Mesa BuscarMesaPorId(int id)
         {
             var mesa = _context.Mesas.SingleOrDefault(m => m.Id.Equals(id));
             return mesa;
         }
 
-        public Mesa UpdateMesa(MesaDTO mesa)
+        public Mesa AtualizarMesa(MesaDTO mesa)
         {
             var mesaAtualizada = _context.Mesas.SingleOrDefault(m => m.Id.Equals(mesa.Id));
             mesaAtualizada.Id = mesa.Id;
@@ -49,7 +49,7 @@ namespace ProjetoUsuario.Persistence.Repository
             return mesaAtualizada;
         }
 
-        public Mesa DeleteMesa(int id)
+        public Mesa DeletarMesa(int id)
         {
             var mesaVinculada = _context.Usuarios.Include(m => m.Mesa).ToList();
             foreach (var item in mesaVinculada)
