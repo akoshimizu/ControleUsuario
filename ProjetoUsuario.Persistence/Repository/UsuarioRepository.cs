@@ -24,7 +24,7 @@ namespace ProjetoUsuario.Persistence.Repository
                 criarUsuario.NomeUsuario = usuario.NomeUsuario;
                 criarUsuario.Email  = usuario.Email;
                 criarUsuario.Perfil = _context.Perfis.First(per => per.Id.Equals(usuario.CodPerfil));
-                criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
+                //criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
                 criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
 
                 bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
@@ -43,12 +43,31 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public List<Usuario> BuscarTodosUsuarios()
         {
-                return _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).ToList();
+                // IQueryable<Usuario> query = _context.Usuarios.
+                // Include(p => p.Perfil)
+                //     .Include(m => m.Mesa)
+                //     .Include(u => u.MesasUsuarios)
+                //     .ThenInclude(mu => mu.Mesa);
+
+                //     return query;
+
+                var user = _context.Usuarios
+                    .Include(p => p.Perfil)
+                    .Include(m => m.MesasUsuarios)
+                    .ThenInclude(m => m.Mesa);
+
+                return user.ToList();
+                // return _context.Usuarios
+                //     .Include(p => p.Perfil)
+                //     //.Include(m => m.Mesa)
+                //     .Include(u => u.MesasUsuarios)
+                //     .ThenInclude(mu => mu.Mesa)
+                //     .ToList();
         }
 
         public Usuario BuscarUsuarioPorId(int id)
         {
-            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).FirstOrDefault(u => u.Id.Equals(id));
+            var usuario = _context.Usuarios.Include(p => p.Perfil).FirstOrDefault(u => u.Id.Equals(id));
             // usuario.MesasdoUsuario = _context.MesaUsuarios.Where(m => m.Usuario.Equals(usuario.Id)).Include(m => m.Mesa).ToList();
             //usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
             if(usuario is null) return null;
@@ -63,7 +82,7 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
         {
-            var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
+            var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
             if(usuarioAtualizado is not null)
             {
                 try
@@ -72,7 +91,7 @@ namespace ProjetoUsuario.Persistence.Repository
                     usuarioAtualizado.NomeUsuario = usuarioDTO.NomeUsuario;
                     //usuarioAtualizado.Email = usuarioDTO.Email;
                     usuarioAtualizado.Perfil = _context.Perfis.First(p => p.Id.Equals(usuarioDTO.CodPerfil));
-                    usuarioAtualizado.Mesa = _context.Mesas.First(m => m.Id.Equals(usuarioDTO.CodMesa));
+                    //usuarioAtualizado.Mesa = _context.Mesas.First(m => m.Id.Equals(usuarioDTO.CodMesa));
                     usuarioAtualizado.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
                     _context.SaveChanges();
                     return usuarioAtualizado;
@@ -112,7 +131,7 @@ namespace ProjetoUsuario.Persistence.Repository
             var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
             if(mesasDoUsuario.Count() >=10) return null;
 
-            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(m => m.Mesa).Include(mu => mu.MesasdoUsuario).SingleOrDefault(u => u.Id.Equals(id));
+            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(mu => mu.MesasUsuarios).SingleOrDefault(u => u.Id.Equals(id));
             var mesaAdicionada = _context.Mesas.First(m => m.Id.Equals(mesa.Id));
             
             //if(usuario.Mesa.Id.Equals(mesa.Id))return null;     //PRECISA ARRUMAR,   VOLTA NULO MAS DEVE MOSTRAR MENSAGEM DE MESA EXISTENTE.

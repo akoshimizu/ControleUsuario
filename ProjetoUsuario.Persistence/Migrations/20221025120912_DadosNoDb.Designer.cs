@@ -11,7 +11,7 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221020164721_DadosNoDb")]
+    [Migration("20221025120912_DadosNoDb")]
     partial class DadosNoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,22 +51,18 @@ namespace ProjetoUsuario.Persistence.Migrations
 
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.MesaUsuario", b =>
                 {
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MesaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    b.Property<int?>("MesaRefId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioRefId")
-                        .HasColumnType("int");
+                    b.HasKey("UsuarioId", "MesaId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("MesaRefId");
-
-                    b.HasIndex("UsuarioRefId");
+                    b.HasIndex("MesaId");
 
                     b.ToTable("mesa_usuario");
                 });
@@ -137,11 +133,15 @@ namespace ProjetoUsuario.Persistence.Migrations
                 {
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Mesa", "Mesa")
                         .WithMany()
-                        .HasForeignKey("MesaRefId");
+                        .HasForeignKey("MesaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Usuario", "Usuario")
-                        .WithMany("MesasdoUsuario")
-                        .HasForeignKey("UsuarioRefId");
+                        .WithMany("MesasUsuarios")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Mesa");
 
@@ -165,7 +165,7 @@ namespace ProjetoUsuario.Persistence.Migrations
 
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.Usuario", b =>
                 {
-                    b.Navigation("MesasdoUsuario");
+                    b.Navigation("MesasUsuarios");
                 });
 #pragma warning restore 612, 618
         }

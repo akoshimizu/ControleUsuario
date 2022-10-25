@@ -51,16 +51,27 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Mesa DeletarMesa(int id)
         {
-            var mesaVinculada = _context.Usuarios.Include(m => m.Mesa).ToList();
-            foreach (var item in mesaVinculada)
+            // var mesaVinculada = _context.Usuarios.Include(m => m.Mesa).ToList();
+            // foreach (var item in mesaVinculada)
+            // {
+            //     if(item.Mesa.Id.Equals(id)) return null;
+            // }
+            try
             {
-                if(item.Mesa.Id.Equals(id)) return null;
-            }
+                var mesaDesativada = _context.Mesas.SingleOrDefault(m => m.Id.Equals(id));
+            // mesaDesativada.IndicadorMesaAtiva = false;
 
-            var mesaDesativada = _context.Mesas.SingleOrDefault(m => m.Id.Equals(id));
-            mesaDesativada.IndicadorMesaAtiva = false;
+            _context.Remove(mesaDesativada);
             _context.SaveChanges();
             return mesaDesativada;
+            }
+            
+            catch (System.Exception)
+            {
+                
+                return null;
+            }
+            
         }
 
         public bool VerificaDuplicidadeMesa(Mesa usuario)

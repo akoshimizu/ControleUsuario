@@ -42,5 +42,8 @@ namespace ProjetoUsuario.Domain.Entidades
 
         [Column("data_ultima_alteracao_mesa")]
         public DateTime DataUltimaAlteracaoMesa { get; set; }
+
+
+        //public IEnumerable<MesaUsuario> MesasUsuarios { get; set; }
     }
 }
