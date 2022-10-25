@@ -47,6 +47,16 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuario);
         }
 
+        //Felipe
+        [HttpPost("criar-usuario-com-mesa")]
+        public IActionResult CriarUsuarioComMesa([FromBody] UsuarioDTO usuario)
+        {
+            if(usuario is null) return BadRequest();
+            var usuarioCriado = _usuario.CriarUsuario(usuario);
+            if(usuarioCriado is null) return BadRequest("usuário existente");
+            return Ok(usuario);
+        }
+
         [HttpPut("AtualizarUsuario")]
         public IActionResult AtualizarUsuario([FromBody] UsuarioDTO usuarioDTO)
         {
