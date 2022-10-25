@@ -30,6 +30,22 @@ namespace ProjetoUsuario.Persistence.Repository
                 bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
                 if(usuarioValido is true) return null;
 
+                //Mesas - Para cada código de mesa informado, verificar se a mesa existe e vincular ao usuário
+                criarUsuario.MesasUsuarios = new List<MesaUsuario>();
+                foreach (var mesa in usuario.Mesas)
+                {
+                    //Deve ser find, mas depende da configuração
+                    var mesaCadastrada = _context.Mesas.Find(mesa);
+                    if(mesaCadastrada != null)
+                    {
+                        criarUsuario.MesasUsuarios.Add(new MesaUsuario()
+                        {
+                            Mesa = mesaCadastrada,
+                            Usuario = criarUsuario
+                        });
+                    }                    
+                }
+
                 _context.Add(criarUsuario);
                 _context.SaveChanges();
                 return criarUsuario;
@@ -67,7 +83,16 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Usuario BuscarUsuarioPorId(int id)
         {
-            var usuario = _context.Usuarios.Include(p => p.Perfil).FirstOrDefault(u => u.Id.Equals(id));
+            //Felipe
+            var usuario = _context
+                        .Usuarios
+                        .Include(x => x.Perfil)
+                        .Include(x => x.MesasUsuarios)
+                            .ThenInclude(x => x.Mesa)
+                        .AsNoTracking()
+                        .FirstOrDefault(x => x.Id == id);
+
+            //var usuario = _context.Usuarios.Include(p => p.Perfil).FirstOrDefault(u => u.Id.Equals(id));
             // usuario.MesasdoUsuario = _context.MesaUsuarios.Where(m => m.Usuario.Equals(usuario.Id)).Include(m => m.Mesa).ToList();
             //usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
             if(usuario is null) return null;

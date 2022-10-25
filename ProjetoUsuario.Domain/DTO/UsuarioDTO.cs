@@ -22,5 +22,8 @@ namespace ProjetoUsuario.Domain.DTO
         [Required(ErrorMessage = "Insira o código da mesa")]
         public int CodMesa { get; set; }
         public bool IndicadorUsuarioAtivo { get; set; }
+
+        //Felipe - 1 usuário X N mesas (só o código)
+        public List<int> Mesas { get; set; }
     }
 }
