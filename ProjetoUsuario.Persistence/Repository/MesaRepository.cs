@@ -14,42 +14,42 @@ namespace ProjetoUsuario.Persistence.Repository
             _context = context;
         }
 
-        public Mesa CriarMesa(Mesa mesa)
+        public async Task<Mesa> CriarMesa(Mesa mesa)
         {
             var duplicidade = VerificaDuplicidadeMesa(mesa);
             if(duplicidade) return null;
             _context.Mesas.Add(mesa);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return mesa;
         }
 
-        public List<Mesa> BuscarTodasMesas()
+        public async Task<List<Mesa>> BuscarTodasMesas()
         {
-            var listaMesas = _context.Mesas.ToList();
+            var listaMesas = await _context.Mesas.ToListAsync();
             return listaMesas;
         }
 
-        public Mesa BuscarMesaPorId(int id)
+        public async Task<Mesa> BuscarMesaPorId(int id)
         {
-            var mesa = _context.Mesas.SingleOrDefault(m => m.Id.Equals(id));
+            var mesa = await _context.Mesas.SingleOrDefaultAsync(m => m.Id.Equals(id));
             return mesa;
         }
 
-        public Mesa AtualizarMesa(MesaDTO mesa)
+        public async Task<Mesa> AtualizarMesa(MesaDTO mesa)
         {
-            var mesaAtualizada = _context.Mesas.SingleOrDefault(m => m.Id.Equals(mesa.Id));
+            var mesaAtualizada = await _context.Mesas.SingleOrDefaultAsync(m => m.Id.Equals(mesa.Id));
             mesaAtualizada.Id = mesa.Id;
             mesaAtualizada.DescricaoMesa = mesa.DescricaoMesa;
             mesaAtualizada.IndicadorMesaAtiva = mesa.IndicarorMesaAtiva;
             mesaAtualizada.DataDeCriacaoMesa = mesaAtualizada.DataDeCriacaoMesa;
             mesaAtualizada.DataUltimaAlteracaoMesa = DateTime.Now;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return mesaAtualizada;
         }
 
-        public Mesa DeletarMesa(int id)
+        public async Task<Mesa> DeletarMesa(int id)
         {
             // var mesaVinculada = _context.Usuarios.Include(m => m.Mesa).ToList();
             // foreach (var item in mesaVinculada)
@@ -58,11 +58,11 @@ namespace ProjetoUsuario.Persistence.Repository
             // }
             try
             {
-                var mesaDesativada = _context.Mesas.SingleOrDefault(m => m.Id.Equals(id));
+                var mesaDesativada = await _context.Mesas.SingleOrDefaultAsync(m => m.Id.Equals(id));
             // mesaDesativada.IndicadorMesaAtiva = false;
 
             _context.Remove(mesaDesativada);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return mesaDesativada;
             }
             

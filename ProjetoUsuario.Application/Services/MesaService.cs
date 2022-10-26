@@ -12,34 +12,34 @@ namespace ProjetoUsuario.Application.Services
         {
             _mesaRepository = mesaRepository;
         }
-        public Mesa Create(MesaDTO mesa)
+        public async Task<Mesa> Create(MesaDTO mesa)
         {
             Mesa novaMesa = new Mesa(mesa);             
-             var mesaAtualizada = _mesaRepository.CriarMesa(novaMesa);
+             var mesaAtualizada = await _mesaRepository.CriarMesa(novaMesa);
             return mesaAtualizada;
         }
 
-        public List<Mesa> FindAllMesa()
+        public async Task<List<Mesa>> FindAllMesa()
         {
-            var listaMesas = _mesaRepository.BuscarTodasMesas();
+            var listaMesas = await _mesaRepository.BuscarTodasMesas();
             return listaMesas;
         }
 
-        public Mesa FindById(int id)
+        public async Task<Mesa> FindById(int id)
         {
-            var mesa = _mesaRepository.BuscarMesaPorId(id);
+            var mesa = await _mesaRepository.BuscarMesaPorId(id);
             return mesa;
         }
 
-        public Mesa UpdateMesa(MesaDTO mesa)
+        public async Task<Mesa> UpdateMesa(MesaDTO mesa)
         {
-            var mesaAtualizada = _mesaRepository.AtualizarMesa(mesa);
+            var mesaAtualizada = await _mesaRepository.AtualizarMesa(mesa);
             return mesaAtualizada;
         }
 
-        public Mesa DeleteMesa(int id)
+        public async Task<Mesa> DeleteMesa(int id)
         {
-            var mesaDeletada = _mesaRepository.DeletarMesa(id);
+            var mesaDeletada = await _mesaRepository.DeletarMesa(id);
             return mesaDeletada;
         }
     }

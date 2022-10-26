@@ -5,10 +5,10 @@ namespace ProjetoUsuario.Application.Interfaces
 {
     public interface IMesaService
     {
-         Mesa FindById(int id);
-        List<Mesa> FindAllMesa();
-        Mesa Create(MesaDTO mesa);
-        Mesa UpdateMesa(MesaDTO mesa);
-        Mesa DeleteMesa(int id);
+        Task<Mesa> FindById(int id);
+        Task<List<Mesa>> FindAllMesa();
+        Task<Mesa> Create(MesaDTO mesa);
+        Task<Mesa> UpdateMesa(MesaDTO mesa);
+        Task<Mesa> DeleteMesa(int id);
     }
 }
