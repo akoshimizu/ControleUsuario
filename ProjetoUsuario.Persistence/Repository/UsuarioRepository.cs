@@ -51,8 +51,8 @@ namespace ProjetoUsuario.Persistence.Repository
                 criarUsuario.Perfil = _context.Perfis.First(per => per.Id.Equals(usuario.CodPerfil));
                 criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
                 criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
-                criarUsuario.DataCriacaoPerfil = DateTime.Now;
-                criarUsuario.DataUltimaAtualizacao = DateTime.Now;
+                criarUsuario.DataCriacaoUsuario = DateTime.Now;
+                criarUsuario.DataUltimaAtualizacaoUsuario = DateTime.Now;
 
                 bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
                 if(usuarioValido is true) return null;
@@ -102,7 +102,7 @@ namespace ProjetoUsuario.Persistence.Repository
                     usuarioAtualizado.NomeUsuario = usuarioDTO.NomeUsuario;
                     //usuarioAtualizado.Email = usuarioDTO.Email;
                     usuarioAtualizado.Perfil = _context.Perfis.First(p => p.Id.Equals(usuarioDTO.CodPerfil));
-                    //usuarioAtualizado.Mesa = _context.Mesas.First(m => m.Id.Equals(usuarioDTO.CodMesa));
+                    usuarioAtualizado.Mesa = _context.Mesas.First(m => m.Id.Equals(usuarioDTO.CodMesa));
                     usuarioAtualizado.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
 
 

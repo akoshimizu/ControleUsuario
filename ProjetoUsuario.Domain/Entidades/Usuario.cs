@@ -24,10 +24,10 @@ namespace ProjetoUsuario.Domain.Entidades
         public bool IndicadorUsuarioAtivo { get; set; }
 
         [Column("data_criacao_usuario")]
-        public DateTime DataCriacaoPerfil { get; set; }
+        public DateTime DataCriacaoUsuario { get; set; }
 
         [Column("data_ultima_atualizacao_usuario")]
-        public DateTime DataUltimaAtualizacao { get; set; }
+        public DateTime DataUltimaAtualizacaoUsuario { get; set; }
 
 
 
