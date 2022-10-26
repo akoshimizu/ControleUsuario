@@ -97,6 +97,14 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
+                    b.Property<DateTime>("DataCriacaoPerfil")
+                        .HasColumnType("datetime")
+                        .HasColumnName("data_criacao_usuario");
+
+                    b.Property<DateTime>("DataUltimaAtualizacao")
+                        .HasColumnType("datetime")
+                        .HasColumnName("data_ultima_atualizacao_usuario");
+
                     b.Property<string>("Email")
                         .HasColumnType("longtext")
                         .HasColumnName("email");

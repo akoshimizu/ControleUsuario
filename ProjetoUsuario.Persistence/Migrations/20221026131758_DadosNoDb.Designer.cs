@@ -11,7 +11,7 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221025165404_DadosNoDb")]
+    [Migration("20221026131758_DadosNoDb")]
     partial class DadosNoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,14 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("id");
+
+                    b.Property<DateTime>("DataCriacaoPerfil")
+                        .HasColumnType("datetime")
+                        .HasColumnName("data_criacao_usuario");
+
+                    b.Property<DateTime>("DataUltimaAtualizacao")
+                        .HasColumnType("datetime")
+                        .HasColumnName("data_ultima_atualizacao_usuario");
 
                     b.Property<string>("Email")
                         .HasColumnType("longtext")

@@ -23,6 +23,12 @@ namespace ProjetoUsuario.Domain.Entidades
         [Column("indicador_usuario")]
         public bool IndicadorUsuarioAtivo { get; set; }
 
+        [Column("data_criacao_usuario")]
+        public DateTime DataCriacaoPerfil { get; set; }
+
+        [Column("data_ultima_atualizacao_usuario")]
+        public DateTime DataUltimaAtualizacao { get; set; }
+
 
 
         public List<MesaUsuario> MesasUsuarios { get; set; }

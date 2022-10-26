@@ -51,6 +51,8 @@ namespace ProjetoUsuario.Persistence.Repository
                 criarUsuario.Perfil = _context.Perfis.First(per => per.Id.Equals(usuario.CodPerfil));
                 criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
                 criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
+                criarUsuario.DataCriacaoPerfil = DateTime.Now;
+                criarUsuario.DataUltimaAtualizacao = DateTime.Now;
 
                 bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
                 if(usuarioValido is true) return null;

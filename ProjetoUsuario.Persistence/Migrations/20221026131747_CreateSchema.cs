@@ -61,7 +61,9 @@ namespace ProjetoUsuario.Persistence.Migrations
                     email = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     MesaId = table.Column<int>(type: "int", nullable: true),
-                    indicador_usuario = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    indicador_usuario = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    data_criacao_usuario = table.Column<DateTime>(type: "datetime", nullable: false),
+                    data_ultima_atualizacao_usuario = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
