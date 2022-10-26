@@ -93,7 +93,7 @@ namespace ProjetoUsuario.Persistence.Repository
 
         public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
         {
-            var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
+            var usuarioAtualizado = _context.Usuarios.Include(p => p.Perfil).Include(m => m.MesasUsuarios).SingleOrDefault(u => u.Id.Equals(usuarioDTO.Id));
             if(usuarioAtualizado is not null)
             {
                 try
@@ -104,6 +104,20 @@ namespace ProjetoUsuario.Persistence.Repository
                     usuarioAtualizado.Perfil = _context.Perfis.First(p => p.Id.Equals(usuarioDTO.CodPerfil));
                     //usuarioAtualizado.Mesa = _context.Mesas.First(m => m.Id.Equals(usuarioDTO.CodMesa));
                     usuarioAtualizado.IndicadorUsuarioAtivo = usuarioDTO.IndicadorUsuarioAtivo;
+
+
+                    for (int i = 0; i < usuarioDTO.Mesas.Count; i++)
+                    {
+                        usuarioAtualizado.MesasUsuarios[i].MesaId = 
+                                usuarioDTO.Mesas[i] == usuarioAtualizado.MesasUsuarios[i].MesaId ? 
+                                        usuarioAtualizado.MesasUsuarios[i].MesaId : usuarioDTO.Mesas[i];                        
+                    }
+
+
+
+
+
+
                     _context.SaveChanges();
                     return usuarioAtualizado;
                 }

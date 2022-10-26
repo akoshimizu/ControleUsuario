@@ -51,7 +51,7 @@ namespace ProjetoUsuario.API.Controllers
         }
 
         [HttpPut("AtualizarUsuario")]
-        public IActionResult AtualizarUsuario([FromBody] UsuarioDTO usuarioDTO)
+        public IActionResult AtualizarUsuario([FromForm] UsuarioDTO usuarioDTO)
         {
             if(usuarioDTO is null) return BadRequest();
             var usuarioAtualizado = _usuario.AtualizarUsuario(usuarioDTO);

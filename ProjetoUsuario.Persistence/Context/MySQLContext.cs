@@ -20,7 +20,7 @@ namespace ProjetoUsuario.Persistence.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MesaUsuario>()
-                .HasKey(me => new {me.UsuarioId, me.MesaId});
+                .HasKey(me => new {me.UsuarioId});
 
             modelBuilder.Entity<Usuario>()
                 .HasMany(m => m.MesasUsuarios)

@@ -85,12 +85,14 @@ namespace ProjetoUsuario.Persistence.Migrations
                 name: "mesa_usuario",
                 columns: table => new
                 {
-                    UsuarioId = table.Column<int>(type: "int", nullable: false),
+                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UsuarioId1 = table.Column<int>(type: "int", nullable: false),
                     MesaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_mesa_usuario", x => new { x.UsuarioId, x.MesaId });
+                    table.PrimaryKey("PK_mesa_usuario", x => x.UsuarioId);
                     table.ForeignKey(
                         name: "FK_mesa_usuario_mesa_MesaId",
                         column: x => x.MesaId,
@@ -98,8 +100,8 @@ namespace ProjetoUsuario.Persistence.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_mesa_usuario_usuario_UsuarioId",
-                        column: x => x.UsuarioId,
+                        name: "FK_mesa_usuario_usuario_UsuarioId1",
+                        column: x => x.UsuarioId1,
                         principalTable: "usuario",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -110,6 +112,11 @@ namespace ProjetoUsuario.Persistence.Migrations
                 name: "IX_mesa_usuario_MesaId",
                 table: "mesa_usuario",
                 column: "MesaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_mesa_usuario_UsuarioId1",
+                table: "mesa_usuario",
+                column: "UsuarioId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_usuario_MesaId",

@@ -50,14 +50,20 @@ namespace ProjetoUsuario.Persistence.Migrations
             modelBuilder.Entity("ProjetoUsuario.Domain.Entidades.MesaUsuario", b =>
                 {
                     b.Property<int>("UsuarioId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
-                    b.HasKey("UsuarioId", "MesaId");
+                    b.Property<int>("UsuarioId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("UsuarioId");
 
                     b.HasIndex("MesaId");
+
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("mesa_usuario");
                 });
@@ -142,7 +148,7 @@ namespace ProjetoUsuario.Persistence.Migrations
 
                     b.HasOne("ProjetoUsuario.Domain.Entidades.Usuario", "Usuario")
                         .WithMany("MesasUsuarios")
-                        .HasForeignKey("UsuarioId")
+                        .HasForeignKey("UsuarioId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
