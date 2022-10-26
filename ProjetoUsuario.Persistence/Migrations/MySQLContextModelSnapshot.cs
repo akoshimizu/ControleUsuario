@@ -55,9 +55,6 @@ namespace ProjetoUsuario.Persistence.Migrations
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.HasKey("UsuarioId", "MesaId");
 
                     b.HasIndex("MesaId");

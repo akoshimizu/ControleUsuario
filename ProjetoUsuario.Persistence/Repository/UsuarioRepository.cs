@@ -14,6 +14,31 @@ namespace ProjetoUsuario.Persistence.Repository
         {
             _context = context;
         }
+
+        public List<Usuario> BuscarTodosUsuarios()
+        {
+                var user = _context.Usuarios
+                    .Include(p => p.Perfil)
+                    .Include(m => m.MesasUsuarios)
+                        .ThenInclude(m => m.Mesa);
+
+                return user.ToList();
+        }
+
+        public Usuario BuscarUsuarioPorId(int id)
+        {
+            //Felipe
+            var usuario = _context
+                        .Usuarios
+                        .Include(x => x.Perfil)
+                        .Include(x => x.Mesa)
+                        .Include(x => x.MesasUsuarios)
+                           .ThenInclude(x => x.Mesa)
+                        .AsNoTracking()
+                        .FirstOrDefault(x => x.Id == id);
+            if(usuario is null) return null;
+            return usuario;
+        }
         
         public Usuario CriarUsuario(UsuarioDTO usuario)
         {
@@ -24,26 +49,33 @@ namespace ProjetoUsuario.Persistence.Repository
                 criarUsuario.NomeUsuario = usuario.NomeUsuario;
                 criarUsuario.Email  = usuario.Email;
                 criarUsuario.Perfil = _context.Perfis.First(per => per.Id.Equals(usuario.CodPerfil));
-                //criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
+                criarUsuario.Mesa = _context.Mesas.First(m => m.Id.Equals(usuario.CodMesa));
                 criarUsuario.IndicadorUsuarioAtivo = usuario.IndicadorUsuarioAtivo;
 
                 bool usuarioValido = VerificaDuplicidadeUsuario(criarUsuario);
                 if(usuarioValido is true) return null;
 
                 //Mesas - Para cada código de mesa informado, verificar se a mesa existe e vincular ao usuário
+                
+                if(usuario.Mesas.Contains(criarUsuario.Mesa.Id)) return null;
+
+                var count = 0;
                 criarUsuario.MesasUsuarios = new List<MesaUsuario>();
                 foreach (var mesa in usuario.Mesas)
                 {
                     //Deve ser find, mas depende da configuração
                     var mesaCadastrada = _context.Mesas.Find(mesa);
-                    if(mesaCadastrada != null)
+                    if(mesaCadastrada != null &&   mesaCadastrada.Id != count)
                     {
                         criarUsuario.MesasUsuarios.Add(new MesaUsuario()
                         {
                             Mesa = mesaCadastrada,
                             Usuario = criarUsuario
                         });
-                    }                    
+                        count = mesaCadastrada.Id;
+                    }
+                    else{
+                    return null;}                   
                 }
 
                 _context.Add(criarUsuario);
@@ -55,54 +87,6 @@ namespace ProjetoUsuario.Persistence.Repository
                 
                 throw;
             }
-        }
-
-        public List<Usuario> BuscarTodosUsuarios()
-        {
-                // IQueryable<Usuario> query = _context.Usuarios.
-                // Include(p => p.Perfil)
-                //     .Include(m => m.Mesa)
-                //     .Include(u => u.MesasUsuarios)
-                //     .ThenInclude(mu => mu.Mesa);
-
-                //     return query;
-
-                var user = _context.Usuarios
-                    .Include(p => p.Perfil)
-                    .Include(m => m.MesasUsuarios)
-                    .ThenInclude(m => m.Mesa);
-
-                return user.ToList();
-                // return _context.Usuarios
-                //     .Include(p => p.Perfil)
-                //     //.Include(m => m.Mesa)
-                //     .Include(u => u.MesasUsuarios)
-                //     .ThenInclude(mu => mu.Mesa)
-                //     .ToList();
-        }
-
-        public Usuario BuscarUsuarioPorId(int id)
-        {
-            //Felipe
-            var usuario = _context
-                        .Usuarios
-                        .Include(x => x.Perfil)
-                        .Include(x => x.MesasUsuarios)
-                            .ThenInclude(x => x.Mesa)
-                        .AsNoTracking()
-                        .FirstOrDefault(x => x.Id == id);
-
-            //var usuario = _context.Usuarios.Include(p => p.Perfil).FirstOrDefault(u => u.Id.Equals(id));
-            // usuario.MesasdoUsuario = _context.MesaUsuarios.Where(m => m.Usuario.Equals(usuario.Id)).Include(m => m.Mesa).ToList();
-            //usuario.MesasdoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).ToList();
-            if(usuario is null) return null;
-            return usuario;
-        }
-
-        public List<MesaUsuario> BuscarMesasDoUsuario(int id)
-        {
-            var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
-            return mesasDoUsuario;
         }
 
         public Usuario AtualizarUsuario(UsuarioDTO usuarioDTO)
@@ -149,24 +133,6 @@ namespace ProjetoUsuario.Persistence.Repository
                 }
             }
             return false;
-        }
-
-        public MesaDTO AdicionarMesa(int id, MesaDTO mesa)
-        {
-            var mesasDoUsuario = _context.MesaUsuarios.Include(m => m.Mesa).Where(m => m.Usuario.Id.Equals(id)).ToList();
-            if(mesasDoUsuario.Count() >=10) return null;
-
-            var usuario = _context.Usuarios.Include(p => p.Perfil).Include(mu => mu.MesasUsuarios).SingleOrDefault(u => u.Id.Equals(id));
-            var mesaAdicionada = _context.Mesas.First(m => m.Id.Equals(mesa.Id));
-            
-            //if(usuario.Mesa.Id.Equals(mesa.Id))return null;     //PRECISA ARRUMAR,   VOLTA NULO MAS DEVE MOSTRAR MENSAGEM DE MESA EXISTENTE.
-
-            MesaUsuario mesaUsuario = new MesaUsuario();
-            mesaUsuario.Usuario = usuario;
-            mesaUsuario.Mesa = mesaAdicionada;
-            _context.Add(mesaUsuario);
-            _context.SaveChanges();
-            return mesa;
         }
     }
 }

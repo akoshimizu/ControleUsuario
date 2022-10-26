@@ -31,13 +31,6 @@ namespace ProjetoUsuario.API.Controllers
             return Ok(usuario);
         }
 
-        [HttpGet("BuscarMesasDoUsuario/{id}")]
-        public IActionResult BuscarMesasDoUsuario(int id)
-        {
-            var mesasDoUsuario = _usuario.BuscarMesasDoUsuario(id);
-            return Ok(mesasDoUsuario);
-        }
-
         [HttpPost("CriarUsuario")]
         public IActionResult CriarUsuario([FromBody] UsuarioDTO usuario)
         {
@@ -70,14 +63,6 @@ namespace ProjetoUsuario.API.Controllers
         {
             _usuario.DesativarUsuario(id);
             return NoContent();
-        }
-
-        [HttpPut("AdicionarMesa")]
-        public IActionResult AdicionarMesa([FromQuery] int id, MesaDTO mesa)
-        {
-            var mesaAdicionada = _usuario.AdicionarMesa(id, mesa);
-            if(mesaAdicionada is null) return BadRequest("Não é possível adicionar mais mesas");
-            return Ok(mesa);
         }
     }
 }

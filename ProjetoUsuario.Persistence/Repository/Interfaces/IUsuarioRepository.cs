@@ -11,7 +11,5 @@ namespace ProjetoUsuario.Persistence.Repository.Interfaces
         Usuario AtualizarUsuario(UsuarioDTO usuario);
         void DeletarUsuario(int id);
         bool VerificaDuplicidadeUsuario(Usuario Usuario);
-        MesaDTO AdicionarMesa(int id, MesaDTO mesa);
-        List<MesaUsuario> BuscarMesasDoUsuario(int id);
     }
 }

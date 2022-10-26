@@ -84,8 +84,7 @@ namespace ProjetoUsuario.Persistence.Migrations
                 columns: table => new
                 {
                     UsuarioId = table.Column<int>(type: "int", nullable: false),
-                    MesaId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    MesaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -11,7 +11,7 @@ using ProjetoUsuario.Persistence.Context;
 namespace ProjetoUsuario.Persistence.Migrations
 {
     [DbContext(typeof(MySQLContext))]
-    [Migration("20221025120912_DadosNoDb")]
+    [Migration("20221025165404_DadosNoDb")]
     partial class DadosNoDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,9 +55,6 @@ namespace ProjetoUsuario.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("MesaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.HasKey("UsuarioId", "MesaId");
