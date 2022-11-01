@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using ProjetoUsuario.Application.Interfaces;
 using ProjetoUsuario.Application.Services;
+using ProjetoUsuario.Domain.Mapper;
 using ProjetoUsuario.Persistence.Context;
 using ProjetoUsuario.Persistence.Repository;
 using ProjetoUsuario.Persistence.Repository.Interfaces;
@@ -24,6 +25,7 @@ builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(connecti
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(MesaProfile));
 
 // Dependency Injection
 builder.Services.AddScoped<IPerfilService, PerfilService>();

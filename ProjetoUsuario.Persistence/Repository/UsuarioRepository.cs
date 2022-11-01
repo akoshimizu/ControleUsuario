@@ -110,12 +110,8 @@ namespace ProjetoUsuario.Persistence.Repository
                     {
                         usuarioAtualizado.MesasUsuarios[i].MesaId = 
                                 usuarioDTO.Mesas[i] == usuarioAtualizado.MesasUsuarios[i].MesaId ? 
-                                        usuarioAtualizado.MesasUsuarios[i].MesaId : usuarioDTO.Mesas[i];                        
+                                        usuarioAtualizado.MesasUsuarios[i].MesaId : usuarioDTO.Mesas[i];                   
                     }
-
-
-
-
 
 
                     _context.SaveChanges();

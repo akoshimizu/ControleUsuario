@@ -1,3 +1,4 @@
+using AutoMapper;
 using ProjetoUsuario.Application.Interfaces;
 using ProjetoUsuario.Domain.DTO;
 using ProjetoUsuario.Domain.Entidades;
@@ -7,14 +8,17 @@ namespace ProjetoUsuario.Application.Services
 {
     public class MesaService : IMesaService
     {
+        private readonly IMapper _mapper;
         private readonly IMesaRepository _mesaRepository;
-        public MesaService(IMesaRepository mesaRepository)
+        public MesaService(IMesaRepository mesaRepository, IMapper mapper)
         {
             _mesaRepository = mesaRepository;
+            _mapper = mapper;
         }
         public async Task<Mesa> Create(MesaDTO mesa)
         {
-            Mesa novaMesa = new Mesa(mesa);             
+            //Mesa novaMesa = new Mesa(mesa);
+            var novaMesa = _mapper.Map<Mesa>(mesa);
              var mesaAtualizada = await _mesaRepository.CriarMesa(novaMesa);
             return mesaAtualizada;
         }
